@@ -1,0 +1,41 @@
+{
+    "schemaVersion": 1,
+    "id": "hyperlighting",
+    "version": "${version}",
+
+    "name": "Hyper Lighting 2",
+    "description": "Not your average Lighting & Decoration Mod",
+    "authors": [
+      "HypherionSA"
+    ],
+    "contact": {
+      "homepage": "",
+      "sources": ""
+    },
+
+    "license": "MIT",
+    "icon": "assets/hyperlighting/icon.png",
+
+    "environment": "*",
+    "entrypoints": {
+      "main": [
+        "me.hypherionmc.hyperlighting.HyperLightingFabric"
+      ],
+      "client": [
+        "me.hypherionmc.hyperlighting.client.HyperLightingFabricClient"
+      ]
+    },
+    "mixins": [
+      "hyperlighting.mixins.json",
+      "hyperlighting.fabric.mixins.json"
+    ],
+
+    "depends": {
+      "fabricloader": ">=0.14",
+      "fabric": "*",
+      "minecraft": "1.19.1",
+      "java": ">=17",
+      "craterlib": "*"
+    },
+    "accessWidener": "hyperlighting.aw"
+  }

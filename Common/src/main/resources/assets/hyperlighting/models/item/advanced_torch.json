@@ -1,0 +1,21 @@
+{
+  "parent": "hyperlighting:block/torch_base",
+  "overrides": [
+    { "predicate": { "color": 0 }, "model": "hyperlighting:block/torch/white_torch" },
+    { "predicate": { "color": 1 }, "model": "hyperlighting:block/torch/orange_torch" },
+    { "predicate": { "color": 2 }, "model": "hyperlighting:block/torch/magenta_torch" },
+    { "predicate": { "color": 3 }, "model": "hyperlighting:block/torch/light_blue_torch" },
+    { "predicate": { "color": 4 }, "model": "hyperlighting:block/torch/yellow_torch" },
+    { "predicate": { "color": 5 }, "model": "hyperlighting:block/torch/lime_torch" },
+    { "predicate": { "color": 6 }, "model": "hyperlighting:block/torch/pink_torch" },
+    { "predicate": { "color": 7 }, "model": "hyperlighting:block/torch/gray_torch" },
+    { "predicate": { "color": 8 }, "model": "hyperlighting:block/torch/light_gray_torch" },
+    { "predicate": { "color": 9 }, "model": "hyperlighting:block/torch/cyan_torch" },
+    { "predicate": { "color": 10 }, "model": "hyperlighting:block/torch/purple_torch" },
+    { "predicate": { "color": 11 }, "model": "hyperlighting:block/torch/blue_torch" },
+    { "predicate": { "color": 12 }, "model": "hyperlighting:block/torch/brown_torch" },
+    { "predicate": { "color": 13 }, "model": "hyperlighting:block/torch/green_torch" },
+    { "predicate": { "color": 14 }, "model": "hyperlighting:block/torch/red_torch" },
+    { "predicate": { "color": 15 }, "model": "hyperlighting:block/torch/black_torch" }
+  ]
+}

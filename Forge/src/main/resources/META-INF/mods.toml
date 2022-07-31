@@ -1,0 +1,38 @@
+modLoader="javafml"
+loaderVersion="[42,)"
+license="MIT"
+#issueTrackerURL="https://change.me.to.your.issue.tracker.example.invalid/"
+
+[[mods]] #mandatory
+modId="hyperlighting"
+version="${file.jarVersion}"
+displayName="Hyper Lighting 2"
+#updateJSONURL="https://change.me.example.invalid/updates.json"
+#displayURL="https://change.me.to.your.mods.homepage.example.invalid/"
+logoFile="multiloader.png"
+#credits="Thanks for this example mod goes to Java"
+authors="HypherionSA"
+description='''
+Not your average Lighting & Decoration Mods
+'''
+
+[[dependencies.hyperlighting]]
+    modId="forge"
+    mandatory=true
+    versionRange="[42,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.hyperlighting]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.19.1,1.20)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.hyperlighting]]
+    modId="craterlib"
+    mandatory=true
+    versionRange="1.0.x"
+    ordering="AFTER"
+    side="BOTH"

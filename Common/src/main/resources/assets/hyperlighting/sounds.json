@@ -1,0 +1,9 @@
+{
+  "block.torch_ignite": {
+    "category": "block",
+    "subtitle": "subtitles.torch_ignite",
+    "sounds": [
+      "hyperlighting:torch_ignite"
+    ]
+  }
+}

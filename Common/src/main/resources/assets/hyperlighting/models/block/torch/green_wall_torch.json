@@ -1,0 +1,6 @@
+{
+  "parent": "hyperlighting:block/torch_wall_base",
+  "textures": {
+    "2": "hyperlighting:block/torch/color/green"
+  }
+}
