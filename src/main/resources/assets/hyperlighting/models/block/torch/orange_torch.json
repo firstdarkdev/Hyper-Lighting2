@@ -1,6 +1,0 @@
-{
-  "parent": "hyperlighting:block/torch_base",
-  "textures": {
-    "1": "hyperlighting:block/torch/color/orange"
-  }
-}
