@@ -17,6 +17,8 @@ public class CommonRegistration {
         HLParticles.loadAll();
         HLBlocks.loadAll();
         HLItems.loadAll();
+        HLEntities.loadAll();
+
     }
 
 }
