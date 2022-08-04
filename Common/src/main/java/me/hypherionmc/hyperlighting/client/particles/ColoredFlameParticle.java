@@ -9,7 +9,6 @@ public class ColoredFlameParticle extends RisingParticle  {
 
     public ColoredFlameParticle(ClientLevel level, double x, double y, double z, double r, double g, double b) {
         super(level, x, y, z, 0, 0, 0);
-        this.setColor((float) r, (float) g, (float) b);
     }
 
     @Override

@@ -17,10 +17,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtUtils;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
@@ -48,10 +45,8 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 import java.util.function.Supplier;
 
 public class AdvancedTorchBlock extends HorizontalDirectionalBlock implements DyableBlock, LightableBlock {
@@ -59,7 +54,15 @@ public class AdvancedTorchBlock extends HorizontalDirectionalBlock implements Dy
     public static final BooleanProperty LIT = BlockStateProperties.LIT;
     public static final EnumProperty<DyeColor> COLOR = EnumProperty.create("color", DyeColor.class);
     public static final EnumProperty<AttachFace> ATTACH_FACE = EnumProperty.create("face", AttachFace.class, AttachFace.FLOOR, AttachFace.WALL);
-    private static final Map<Direction, VoxelShape> SHAPES = Maps.newEnumMap(ImmutableMap.of(Direction.NORTH, Block.box(5.5D, 2.0D, 11.0D, 10.5D, 12.0D, 16.0D), Direction.SOUTH, Block.box(5.5D, 2.0D, 0.0D, 10.5D, 12.0D, 5.0D), Direction.WEST, Block.box(11.0D, 2.0D, 5.5D, 16.0D, 12.0D, 10.5D), Direction.EAST, Block.box(0.0D, 2.0D, 5.5D, 5.0D, 12.0D, 10.5D), Direction.UP, Block.box(6.0D, 0.0D, 6.0D, 10.0D, 10.0D, 10.0D)));
+    private static final Map<Direction, VoxelShape> SHAPES = Maps.newEnumMap(
+            ImmutableMap.of(
+                    Direction.NORTH, Block.box(5.5D, 2.0D, 11.0D, 10.5D, 12.0D, 16.0D),
+                    Direction.SOUTH, Block.box(5.5D, 2.0D, 0.0D, 10.5D, 12.0D, 5.0D),
+                    Direction.WEST, Block.box(11.0D, 2.0D, 5.5D, 16.0D, 12.0D, 10.5D),
+                    Direction.EAST, Block.box(0.0D, 2.0D, 5.5D, 5.0D, 12.0D, 10.5D),
+                    Direction.UP, Block.box(6.0D, 0.0D, 6.0D, 10.0D, 10.0D, 10.0D)
+            ));
+
     private final Supplier<SimpleParticleType> particleType;
 
     private DyeColor color;
@@ -188,9 +191,7 @@ public class AdvancedTorchBlock extends HorizontalDirectionalBlock implements Dy
                 double d1 = (double) pos.getY() + 0.7D;
                 double d2 = (double) pos.getZ() + 0.5D;
                 levelIn.addParticle(ParticleTypes.SMOKE, d0, d1, d2, 0.0D, 0.0D, 0.0D);
-
-                // xSpeed, ySpeed and zSpeed here is used to pass color data. This isn't the proper way, but I don't wanna add a bunch of extra code for something so simple
-                levelIn.addParticle(particleType.get(), d0, d1, d2, color.getTextureDiffuseColors()[0], color.getTextureDiffuseColors()[1], color.getTextureDiffuseColors()[2]);
+                levelIn.addParticle(particleType.get(), d0, d1, d2, 0D, 0D, 0D);
             } else {
                 Direction direction = stateIn.getValue(FACING);
                 double d0 = (double) pos.getX() + 0.5D;
@@ -198,9 +199,7 @@ public class AdvancedTorchBlock extends HorizontalDirectionalBlock implements Dy
                 double d2 = (double) pos.getZ() + 0.5D;
                 Direction direction1 = direction.getOpposite();
                 levelIn.addParticle(ParticleTypes.SMOKE, d0 + 0.37D * (double) direction1.getStepX(), d1 + 0.15D, d2 + 0.37D * (double) direction1.getStepZ(), 0.0D, 0.0D, 0.0D);
-
-                // xSpeed, ySpeed and zSpeed here is used to pass color data. This isn't the proper way, but I don't wanna add a bunch of extra code for something so simple
-                levelIn.addParticle(particleType.get(), d0 + 0.37D * (double) direction1.getStepX(), d1 + 0.15D, d2 + 0.37D * (double) direction1.getStepZ(), color.getTextureDiffuseColors()[0], color.getTextureDiffuseColors()[1], color.getTextureDiffuseColors()[2]);
+                levelIn.addParticle(particleType.get(), d0 + 0.37D * (double) direction1.getStepX(), d1 + 0.15D, d2 + 0.37D * (double) direction1.getStepZ(), 0D, 0D, 0D);
             }
         }
     }

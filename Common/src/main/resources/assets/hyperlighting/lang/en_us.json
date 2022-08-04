@@ -1,5 +1,9 @@
 {
   "block.hyperlighting.advanced_torch": "Advanced Torch (%s)",
 
-  "subtitles.torch_ignite": "Torch Ignite Sound"
+  "subtitles.torch_ignite": "Torch Ignite Sound",
+
+  "cl.hyperlightingconfig.title": "Hyper Lighting Config",
+  "cl.torchconfig.litbydefault": "Lit when Placed",
+  "cl.torchconfig.requirestool": "Requires Torch Lighter"
 }
