@@ -8,6 +8,7 @@ import me.hypherionmc.craterlib.util.BlockStateUtils;
 import me.hypherionmc.craterlib.util.RenderUtils;
 import me.hypherionmc.hyperlighting.api.LightableBlock;
 import me.hypherionmc.hyperlighting.common.init.CommonRegistration;
+import me.hypherionmc.hyperlighting.common.init.FlameParticles;
 import me.hypherionmc.hyperlighting.common.init.HLItems;
 import me.hypherionmc.hyperlighting.common.init.HLSounds;
 import me.hypherionmc.hyperlighting.util.StackUtil;
@@ -63,14 +64,11 @@ public class AdvancedTorchBlock extends HorizontalDirectionalBlock implements Dy
                     Direction.UP, Block.box(6.0D, 0.0D, 6.0D, 10.0D, 10.0D, 10.0D)
             ));
 
-    private final Supplier<SimpleParticleType> particleType;
-
     private DyeColor color;
 
-    public AdvancedTorchBlock(String name, DyeColor color, CreativeModeTab tab, Supplier<SimpleParticleType> type) {
+    public AdvancedTorchBlock(String name, DyeColor color, CreativeModeTab tab) {
         super(Properties.of(Material.WOOD).noCollission().instabreak().lightLevel(BlockStateUtils.createLightLevelFromLitBlockState(15)));
         this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH).setValue(LIT, CommonRegistration.config.torchConfig.litByDefault).setValue(COLOR, color));
-        this.particleType = type;
         this.color = color;
 
         HLItems.register(name, () -> new BlockItemDyable(this, new Item.Properties().tab(tab)));
@@ -191,7 +189,7 @@ public class AdvancedTorchBlock extends HorizontalDirectionalBlock implements Dy
                 double d1 = (double) pos.getY() + 0.7D;
                 double d2 = (double) pos.getZ() + 0.5D;
                 levelIn.addParticle(ParticleTypes.SMOKE, d0, d1, d2, 0.0D, 0.0D, 0.0D);
-                levelIn.addParticle(particleType.get(), d0, d1, d2, 0D, 0D, 0D);
+                levelIn.addParticle(FlameParticles.getParticleByColor(color).get(), d0, d1, d2, 0D, 0D, 0D);
             } else {
                 Direction direction = stateIn.getValue(FACING);
                 double d0 = (double) pos.getX() + 0.5D;
@@ -199,7 +197,7 @@ public class AdvancedTorchBlock extends HorizontalDirectionalBlock implements Dy
                 double d2 = (double) pos.getZ() + 0.5D;
                 Direction direction1 = direction.getOpposite();
                 levelIn.addParticle(ParticleTypes.SMOKE, d0 + 0.37D * (double) direction1.getStepX(), d1 + 0.15D, d2 + 0.37D * (double) direction1.getStepZ(), 0.0D, 0.0D, 0.0D);
-                levelIn.addParticle(particleType.get(), d0 + 0.37D * (double) direction1.getStepX(), d1 + 0.15D, d2 + 0.37D * (double) direction1.getStepZ(), 0D, 0D, 0D);
+                levelIn.addParticle(FlameParticles.getParticleByColor(color).get(), d0 + 0.37D * (double) direction1.getStepX(), d1 + 0.15D, d2 + 0.37D * (double) direction1.getStepZ(), 0D, 0D, 0D);
             }
         }
     }

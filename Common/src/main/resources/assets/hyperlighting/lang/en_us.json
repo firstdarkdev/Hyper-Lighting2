@@ -3,6 +3,8 @@
 
   "subtitles.torch_ignite": "Torch Ignite Sound",
 
+  "entity.hyperlighting.firefly": "Neon Fly",
+
   "cl.hyperlightingconfig.title": "Hyper Lighting Config",
   "cl.torchconfig.litbydefault": "Lit when Placed",
   "cl.torchconfig.requirestool": "Requires Torch Lighter"

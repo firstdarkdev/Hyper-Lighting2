@@ -14,12 +14,12 @@ public class HLParticles {
 
     public static final RegistrationProvider<ParticleType<?>> PARTICLES = RegistrationProvider.get(Registry.PARTICLE_TYPE_REGISTRY, Constants.MOD_ID);
 
-    public static RegistryObject<SimpleParticleType> COLORED_FLAME = register("colored_flame", () -> new WrappedSimpleParticleType(false));
-
     public static <T extends ParticleType<?>> RegistryObject<T> register(String name, Supplier<T> particle) {
         return PARTICLES.register(name, particle);
     }
 
-    public static void loadAll() {}
+    public static void loadAll() {
+        FlameParticles.loadAll();
+    }
 
 }
