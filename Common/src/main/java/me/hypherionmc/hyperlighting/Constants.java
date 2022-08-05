@@ -1,11 +1,6 @@
 package me.hypherionmc.hyperlighting;
 
-import me.hypherionmc.craterlib.client.gui.tabs.CreativeTabBuilder;
-import me.hypherionmc.hyperlighting.common.init.HLBlocks;
-import me.hypherionmc.hyperlighting.common.init.HLItems;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.ItemStack;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

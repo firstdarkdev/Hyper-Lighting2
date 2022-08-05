@@ -1,17 +1,11 @@
 package me.hypherionmc.hyperlighting.common.init;
 
 import me.hypherionmc.craterlib.common.particles.WrappedSimpleParticleType;
-import me.hypherionmc.craterlib.systems.reg.RegistrationProvider;
 import me.hypherionmc.craterlib.systems.reg.RegistryObject;
-import me.hypherionmc.hyperlighting.Constants;
-import net.minecraft.core.Registry;
-import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.level.material.MaterialColor;
 
 import java.util.Arrays;
-import java.util.function.Supplier;
 
 import static me.hypherionmc.hyperlighting.common.init.HLParticles.register;
 

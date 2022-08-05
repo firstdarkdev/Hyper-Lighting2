@@ -1,7 +1,6 @@
 package me.hypherionmc.hyperlighting.client.particles;
 
 import me.hypherionmc.hyperlighting.common.init.FlameParticles;
-import me.hypherionmc.hyperlighting.common.init.HLParticles;
 import net.minecraft.client.particle.ParticleEngine;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleType;

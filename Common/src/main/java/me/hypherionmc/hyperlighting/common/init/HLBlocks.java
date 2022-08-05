@@ -5,7 +5,6 @@ import me.hypherionmc.craterlib.systems.reg.RegistrationProvider;
 import me.hypherionmc.hyperlighting.Constants;
 import me.hypherionmc.hyperlighting.common.blocks.AdvancedTorchBlock;
 import net.minecraft.core.Registry;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.Block;
 

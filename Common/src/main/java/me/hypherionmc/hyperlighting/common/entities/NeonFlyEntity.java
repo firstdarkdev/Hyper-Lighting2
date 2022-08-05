@@ -4,6 +4,7 @@ import me.hypherionmc.hyperlighting.common.entities.ai.FindSimilarEntityGoal;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -12,20 +13,18 @@ import net.minecraft.world.entity.ai.control.FlyingMoveControl;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
-import net.minecraft.world.entity.ai.util.AirAndWaterRandomPos;
-import net.minecraft.world.entity.ai.util.HoverRandomPos;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.FlyingAnimal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
-import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.EnumSet;
@@ -44,20 +43,21 @@ public class NeonFlyEntity extends Animal implements FlyingAnimal {
         super(type, level);
         this.moveControl = new FlyingMoveControl(this, 20, true);
 
-        this.setPathfindingMalus(BlockPathTypes.COCOA, -1.0F);
+        this.setPathfindingMalus(BlockPathTypes.WATER, -1.0F);
+        this.setPathfindingMalus(BlockPathTypes.WATER_BORDER, 1.0F);
 
         this.color = DyeColor.byId(new Random().nextInt(DyeColor.values().length - 1));
     }
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(0, new FireflySwampGoal(this, 1.1D, 24));
-        this.goalSelector.addGoal(1, new FindSimilarEntityGoal(this, 1.1D, 24, NeonFlyEntity.class));
-        this.goalSelector.addGoal(2, new FireflyWanderGoal());
-        this.goalSelector.addGoal(3, new FloatGoal(this));
-        this.goalSelector.addGoal(4, new BreedGoal(this, 1.0f));
-        this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 8.0f));
-        this.goalSelector.addGoal(6, new FleeSunGoal(this, 1.1D));
+        this.goalSelector.addGoal(0, new FleeSunGoal(this, 1.1D));
+        this.goalSelector.addGoal(1, new FireflySwampGoal(this, 1.1D, 28));
+        this.goalSelector.addGoal(2, new FindSimilarEntityGoal(this, 1.1D, 28, NeonFlyEntity.class));
+        this.goalSelector.addGoal(3, new RandomLookAroundGoal(this));
+        this.goalSelector.addGoal(4, new AvoidEntityGoal(this, Player.class, 6.0F, 1.0, 1.2));
+        this.goalSelector.addGoal(5, new WaterAvoidingRandomFlyingGoal(this, 1.4D));
+        this.goalSelector.addGoal(6, new PanicGoal(this, 1D));
     }
 
     @Nullable
@@ -73,8 +73,8 @@ public class NeonFlyEntity extends Animal implements FlyingAnimal {
     }
 
     @Override
-    public void load(CompoundTag pCompound) {
-        super.load(pCompound);
+    public void readAdditionalSaveData(CompoundTag pCompound) {
+        super.readAdditionalSaveData(pCompound);
         this.isGlowing = pCompound.getBoolean("isGlowing");
         this.color = DyeColor.byId(pCompound.getInt("color"));
     }
@@ -114,7 +114,7 @@ public class NeonFlyEntity extends Animal implements FlyingAnimal {
         FlyingPathNavigation flyingPathNavigation = new FlyingPathNavigation(this, pLevel) {
             @Override
             public boolean isStableDestination(BlockPos pPos) {
-                return true;
+                return !pLevel.getFluidState(pPos).is(Fluids.WATER) && !pLevel.getFluidState(pPos).is(Fluids.FLOWING_WATER);
             }
         };
         flyingPathNavigation.setCanOpenDoors(false);
@@ -154,51 +154,15 @@ public class NeonFlyEntity extends Animal implements FlyingAnimal {
         return 0.5f;
     }
 
-    public static boolean canSpawn(EntityType<NeonFlyEntity> entity, LevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, Random random) {
-        return levelAccessor instanceof Level level && !level.isDay() && !level.isRainingAt(pos);
-    }
-
-    class FireflyWanderGoal extends Goal {
-
-        FireflyWanderGoal() {
-            this.setFlags(EnumSet.of(Flag.MOVE));
-        }
-
-        @Override
-        public boolean canUse() {
-            return NeonFlyEntity.this.navigation.isDone() && NeonFlyEntity.this.random.nextInt(10) == 0;
-        }
-
-        @Override
-        public boolean canContinueToUse() {
-            return NeonFlyEntity.this.navigation.isInProgress();
-        }
-
-        @Override
-        public void start() {
-            Vec3 vec3 = this.findPos();
-            if (vec3 != null) {
-                NeonFlyEntity.this.navigation.moveTo(
-                        NeonFlyEntity.this.navigation.createPath(new BlockPos(vec3), 1),
-                        1.0D
-                );
-            }
-        }
-
-        @Nullable
-        private Vec3 findPos() {
-            Vec3 vec3 = NeonFlyEntity.this.getViewVector(0.0f);
-            Vec3 vec32 = HoverRandomPos.getPos(NeonFlyEntity.this, 8, 7, vec3.x, vec3.z, ((float)Math.PI / 2F), 3, 1);
-            return vec32 != null ? vec32 : AirAndWaterRandomPos.getPos(NeonFlyEntity.this, 8, 4, -2, vec3.x, vec3.z, (float)Math.PI / 2F);
-        }
+    public static <T extends Mob> boolean canSpawn(EntityType<NeonFlyEntity> entity, ServerLevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, RandomSource random) {
+        return !levelAccessor.getLevel().isDay() && !levelAccessor.getLevel().isRainingAt(pos);
     }
 
     static class FireflySwampGoal extends MoveToBlockGoal {
 
         public FireflySwampGoal(PathfinderMob pMob, double pSpeedModifier, int pSearchRange) {
             super(pMob, pSpeedModifier, pSearchRange);
-            this.verticalSearchStart = -2;
-            this.setFlags(EnumSet.of(Flag.JUMP, Goal.Flag.MOVE));
+            this.setFlags(EnumSet.of(Goal.Flag.MOVE));
         }
 
         @Override
@@ -208,7 +172,7 @@ public class NeonFlyEntity extends Animal implements FlyingAnimal {
 
         @Override
         protected int nextStartTick(PathfinderMob pCreature) {
-            return mob.getLevel().random.nextInt(120);
+            return mob.getLevel().random.nextInt(500);
         }
     }
 }

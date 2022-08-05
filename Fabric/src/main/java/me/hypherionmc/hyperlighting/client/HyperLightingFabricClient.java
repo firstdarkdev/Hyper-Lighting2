@@ -26,7 +26,7 @@ public class HyperLightingFabricClient implements ClientModInitializer {
             }
         });
 
-        EntityRendererRegistry.register(HLEntities.FIREFLY.get(), NeonFlyRenderer::new);
+        EntityRendererRegistry.register(HLEntities.NEONFLY.get(), NeonFlyRenderer::new);
         EntityModelLayerRegistry.registerModelLayer(NeonFlyModel.LAYER_LOCATION, NeonFlyModel::createBodyLayer);
     }
 }

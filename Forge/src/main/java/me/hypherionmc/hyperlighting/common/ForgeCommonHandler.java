@@ -15,7 +15,7 @@ public class ForgeCommonHandler {
 
     @SubscribeEvent
     public static void onAttributeCreate(EntityAttributeCreationEvent event) {
-        event.put(HLEntities.FIREFLY.get(), NeonFlyEntity.prepareAttributes().build());
+        event.put(HLEntities.NEONFLY.get(), NeonFlyEntity.prepareAttributes().build());
     }
 
 }

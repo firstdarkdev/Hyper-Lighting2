@@ -16,10 +16,10 @@ public class HLEntities {
 
     public static final RegistrationProvider<EntityType<?>> ENTITIES = RegistrationProvider.get(Registry.ENTITY_TYPE, Constants.MOD_ID);
 
-    public static final RegistryObject<EntityType<NeonFlyEntity>> FIREFLY = ENTITIES.register("firefly", () -> EntityType.Builder.of(NeonFlyEntity::new, MobCategory.AMBIENT)
+    public static final RegistryObject<EntityType<NeonFlyEntity>> NEONFLY = ENTITIES.register("neonfly", () -> EntityType.Builder.of(NeonFlyEntity::new, MobCategory.AMBIENT)
             .sized(1f, 1f)
             .clientTrackingRange(8)
-            .build("firefly"));
+            .build("neonfly"));
 
     public static void loadAll() {}
 }

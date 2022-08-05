@@ -1,12 +1,10 @@
 package me.hypherionmc.hyperlighting.common.init;
 
-import me.hypherionmc.craterlib.common.particles.WrappedSimpleParticleType;
 import me.hypherionmc.craterlib.systems.reg.RegistrationProvider;
 import me.hypherionmc.craterlib.systems.reg.RegistryObject;
 import me.hypherionmc.hyperlighting.Constants;
 import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleType;
-import net.minecraft.core.particles.SimpleParticleType;
 
 import java.util.function.Supplier;
 
