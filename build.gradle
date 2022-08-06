@@ -45,6 +45,10 @@ subprojects {
             name = 'First Dark Dev Maven'
             url = 'https://maven.firstdarkdev.xyz/snapshots'
         }
+        maven {
+            name = "TerraformersMC Maven"
+            url = "https://maven.terraformersmc.com/releases"
+        }
     }
 
 

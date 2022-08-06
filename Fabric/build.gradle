@@ -16,6 +16,10 @@ dependencies {
     modApi("me.hypherionmc.craterlib:CraterLib-fabric-1.19.1:${craterlib_version}") {
         exclude(group: "net.fabricmc.fabric-api")
     }
+
+    modApi("com.terraformersmc:modmenu:${mod_menu_version}") {
+        exclude(group: "net.fabricmc.fabric-api")
+    }
 }
 
 loom {
