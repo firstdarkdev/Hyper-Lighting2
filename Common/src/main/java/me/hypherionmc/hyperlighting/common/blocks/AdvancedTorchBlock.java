@@ -50,9 +50,13 @@ import java.util.Map;
 
 public class AdvancedTorchBlock extends HorizontalDirectionalBlock implements DyableBlock, LightableBlock {
 
+    //region Properties
     public static final BooleanProperty LIT = BlockStateProperties.LIT;
     public static final EnumProperty<DyeColor> COLOR = EnumProperty.create("color", DyeColor.class);
     public static final EnumProperty<AttachFace> ATTACH_FACE = EnumProperty.create("face", AttachFace.class, AttachFace.FLOOR, AttachFace.WALL);
+    //endregion
+
+    //region Bounding Boxes
     private static final Map<Direction, VoxelShape> SHAPES = Maps.newEnumMap(
             ImmutableMap.of(
                     Direction.NORTH, Block.box(5.5D, 2.0D, 11.0D, 10.5D, 12.0D, 16.0D),
@@ -60,7 +64,9 @@ public class AdvancedTorchBlock extends HorizontalDirectionalBlock implements Dy
                     Direction.WEST, Block.box(11.0D, 2.0D, 5.5D, 16.0D, 12.0D, 10.5D),
                     Direction.EAST, Block.box(0.0D, 2.0D, 5.5D, 5.0D, 12.0D, 10.5D),
                     Direction.UP, Block.box(6.0D, 0.0D, 6.0D, 10.0D, 10.0D, 10.0D)
-            ));
+            )
+    );
+    //endregion
 
     private DyeColor color;
 
