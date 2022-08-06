@@ -10,5 +10,8 @@
 
   "cl.hyperlightingconfig.title": "Hyper Lighting Config",
   "cl.torchconfig.litbydefault": "Lit when Placed",
-  "cl.torchconfig.requirestool": "Requires Torch Lighter"
+  "cl.torchconfig.requirestool": "Requires Torch Lighter",
+  "cl.lanternconfig.litbydefault": "Lit when Placed",
+  "cl.lanternconfig.requirestool": "Requires Torch Lighter",
+  "itemGroup.hyperlighting.lighting": "Hyper Lighting (Lights)"
 }
