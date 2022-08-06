@@ -10,7 +10,7 @@ import static me.hypherionmc.hyperlighting.Constants.MOD_ID;
 public class CommonRegistration {
 
     public static HyperLightingConfig config = new HyperLightingConfig();
-    public static final CreativeModeTab LIGHTS_TAB = CreativeTabBuilder.builder(MOD_ID, "lighting").setIcon(() -> new ItemStack(HLBlocks.ADVANCED_TORCH)).build();
+    public static final CreativeModeTab LIGHTS_TAB = CreativeTabBuilder.builder(MOD_ID, "lighting").setIcon(() -> new ItemStack(HLBlocks.ADVANCED_LANTERN)).build();
 
     public static void registerAll() {
         HLSounds.loadAll();
@@ -18,7 +18,6 @@ public class CommonRegistration {
         HLBlocks.loadAll();
         HLItems.loadAll();
         HLEntities.loadAll();
-
     }
 
 }

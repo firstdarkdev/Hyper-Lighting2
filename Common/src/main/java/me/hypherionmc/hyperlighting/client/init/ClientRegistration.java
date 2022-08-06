@@ -1,10 +1,13 @@
 package me.hypherionmc.hyperlighting.client.init;
 
+import me.hypherionmc.craterlib.api.rendering.CustomRenderType;
 import me.hypherionmc.craterlib.client.events.ColorRegistrationEvent;
 import me.hypherionmc.craterlib.client.registry.ClientRegistry;
 import me.hypherionmc.craterlib.events.CraterEventBus;
+import me.hypherionmc.craterlib.platform.Services;
 import me.hypherionmc.hyperlighting.common.init.HLBlocks;
 import me.hypherionmc.hyperlighting.common.init.HLItems;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
 
 /**
  * @author HypherionSA
@@ -15,6 +18,8 @@ public class ClientRegistration {
     public void registerAll() {
         CraterEventBus.register(ColorRegistrationEvent.BLOCKS.class, this::registerBlockColors);
         CraterEventBus.register(ColorRegistrationEvent.ITEMS.class, this::registerItemColors);
+
+        Services.CLIENT_HELPER.registerCustomRenderTypes(HLBlocks.BLOCKS.getEntries(), HLItems.ITEMS.getEntries());
     }
 
     public void registerBlockColors(ColorRegistrationEvent.BLOCKS event) {

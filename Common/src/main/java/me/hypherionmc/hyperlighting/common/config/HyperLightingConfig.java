@@ -14,6 +14,11 @@ public class HyperLightingConfig extends ModuleConfig {
     @SubConfig
     public TorchConfig torchConfig = new TorchConfig();
 
+    @Path("lanternConfig")
+    @SpecComment("Lantern Configuration")
+    @SubConfig
+    public LanternConfig lanternConfig = new LanternConfig();
+
     public HyperLightingConfig() {
         super(Constants.MOD_ID, "hyperlighting-common");
         registerAndSetup(this);
@@ -31,6 +36,16 @@ public class HyperLightingConfig extends ModuleConfig {
 
         @Path("requiresTool")
         @SpecComment("Is the Torch Lighter tool needed to light torches")
+        public boolean requiresTool = true;
+    }
+
+    public static class LanternConfig {
+        @Path("litByDefault")
+        @SpecComment("Should Lanterns be lit by default when placed")
+        public boolean litByDefault = false;
+
+        @Path("requiresTool")
+        @SpecComment("Is the Torch Lighter tool needed to light Lanterns")
         public boolean requiresTool = true;
     }
 }

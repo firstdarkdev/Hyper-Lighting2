@@ -1,7 +1,10 @@
 {
   "block.hyperlighting.advanced_torch": "Advanced Torch (%s)",
+  "block.hyperlighting.advanced_lantern": "Advanced Lantern (%s)",
 
-  "subtitles.torch_ignite": "Torch Ignite Sound",
+  "item.hyperlighting.lighter_tool": "Torch Lighter Tool",
+
+  "subtitles.torch_ignite": "Flame Ignite Sound",
 
   "entity.hyperlighting.neonfly": "Neon Fly",
 
