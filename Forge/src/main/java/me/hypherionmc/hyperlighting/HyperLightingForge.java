@@ -20,17 +20,19 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 @Mod(Constants.MOD_ID)
 public class HyperLightingForge {
 
+    private ClientRegistration registration = new ClientRegistration();
+
     public HyperLightingForge() {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientInit);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::commonInit);
         CommonRegistration.registerAll();
 
         ForgeWorldGen.registerAll(FMLJavaModLoadingContext.get().getModEventBus());
+        registration.registerEvents();
     }
 
     public void clientInit(FMLClientSetupEvent event) {
-        new ClientRegistration().registerAll();
-        ModLoadingContext.get().registerExtensionPoint(ConfigScreenHandler.ConfigScreenFactory.class, () -> new ConfigScreenHandler.ConfigScreenFactory((mc, screen) -> new CraterConfigScreen(CommonRegistration.config, screen)));
+        registration.registerAll();
 
         EntityRenderers.register(HLEntities.NEONFLY.get(), NeonFlyRenderer::new);
     }

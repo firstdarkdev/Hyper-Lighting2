@@ -16,10 +16,12 @@ import net.minecraft.client.renderer.ItemBlockRenderTypes;
 public class ClientRegistration {
 
     public void registerAll() {
+        Services.CLIENT_HELPER.registerCustomRenderTypes(HLBlocks.BLOCKS.getEntries(), HLItems.ITEMS.getEntries());
+    }
+
+    public void registerEvents() {
         CraterEventBus.register(ColorRegistrationEvent.BLOCKS.class, this::registerBlockColors);
         CraterEventBus.register(ColorRegistrationEvent.ITEMS.class, this::registerItemColors);
-
-        Services.CLIENT_HELPER.registerCustomRenderTypes(HLBlocks.BLOCKS.getEntries(), HLItems.ITEMS.getEntries());
     }
 
     public void registerBlockColors(ColorRegistrationEvent.BLOCKS event) {

@@ -17,7 +17,10 @@ public class HyperLightingFabricClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        new ClientRegistration().registerAll();
+        ClientRegistration registration = new ClientRegistration();
+        registration.registerEvents();
+        registration.registerAll();
+
         // TODO: Move to CraterLib as an Event
         ParticleRegistryHandler.registerParticles(new ParticleRegistryHandler.ParticleStrategy() {
             @Override
