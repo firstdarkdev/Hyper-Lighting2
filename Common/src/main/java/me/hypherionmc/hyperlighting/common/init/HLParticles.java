@@ -18,6 +18,7 @@ public class HLParticles {
 
     public static void loadAll() {
         FlameParticles.loadAll();
+        CandleFlameParticles.loadAll();
     }
 
 }
