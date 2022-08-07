@@ -42,12 +42,20 @@ subprojects {
             url = 'https://repo.spongepowered.org/repository/maven-public/'
         }
         maven {
-            name = 'First Dark Dev Maven'
+            name = 'First Dark Dev Maven Snapshots'
             url = 'https://maven.firstdarkdev.xyz/snapshots'
+        }
+        maven {
+            name = 'First Dark Dev Maven Releases'
+            url = 'https://maven.firstdarkdev.xyz/releases'
         }
         maven {
             name = "TerraformersMC Maven"
             url = "https://maven.terraformersmc.com/releases"
+        }
+        maven {
+            name = "Curseforge Maven"
+            url 'https://cfa2.cursemaven.com'
         }
     }
 
