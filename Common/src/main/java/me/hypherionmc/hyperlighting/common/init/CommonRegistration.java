@@ -2,6 +2,7 @@ package me.hypherionmc.hyperlighting.common.init;
 
 import me.hypherionmc.craterlib.client.gui.tabs.CreativeTabBuilder;
 import me.hypherionmc.hyperlighting.common.config.HyperLightingConfig;
+import me.hypherionmc.hyperlighting.integration.HyperLightingIntegrations;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 
@@ -18,6 +19,7 @@ public class CommonRegistration {
         HLBlocks.loadAll();
         HLItems.loadAll();
         HLEntities.loadAll();
+        HyperLightingIntegrations.registerCommon();
     }
 
 }

@@ -7,6 +7,7 @@ import me.hypherionmc.craterlib.events.CraterEventBus;
 import me.hypherionmc.craterlib.platform.Services;
 import me.hypherionmc.hyperlighting.common.init.HLBlocks;
 import me.hypherionmc.hyperlighting.common.init.HLItems;
+import me.hypherionmc.hyperlighting.integration.HyperLightingIntegrations;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 
 /**
@@ -17,6 +18,7 @@ public class ClientRegistration {
 
     public void registerAll() {
         Services.CLIENT_HELPER.registerCustomRenderTypes(HLBlocks.BLOCKS.getEntries(), HLItems.ITEMS.getEntries());
+        HyperLightingIntegrations.registerClient();
     }
 
     public void registerEvents() {

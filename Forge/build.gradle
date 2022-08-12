@@ -84,6 +84,12 @@ dependencies {
     compileOnly project(":Common")
     annotationProcessor 'org.spongepowered:mixin:0.8.4-SNAPSHOT:processor'
     implementation fg.deobf("me.hypherionmc.craterlib:CraterLib-forge-1.19.1:${craterlib_version}")
+
+    // Rubidium
+    implementation fg.deobf("curse.maven:rubidium-574856:${ribidium_version}")
+
+    // Shimmer
+    implementation fg.deobf("com.lowdragmc.shimmer:Shimmer-forge-1.19.1:${shimmer_version}")
 }
 
 tasks.withType(JavaCompile) {

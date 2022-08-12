@@ -1,0 +1,6 @@
+{
+  "parent": "hyperlighting:block/candle_base",
+  "textures": {
+    "0": "hyperlighting:block/candle/color/pink"
+  }
+}

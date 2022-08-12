@@ -3,6 +3,7 @@ package me.hypherionmc.hyperlighting.common.init;
 import me.hypherionmc.craterlib.systems.reg.BlockRegistryObject;
 import me.hypherionmc.craterlib.systems.reg.RegistrationProvider;
 import me.hypherionmc.hyperlighting.Constants;
+import me.hypherionmc.hyperlighting.common.blocks.AdvancedCandleBlock;
 import me.hypherionmc.hyperlighting.common.blocks.AdvancedLanternBlock;
 import me.hypherionmc.hyperlighting.common.blocks.AdvancedTorchBlock;
 import net.minecraft.core.Registry;
@@ -20,6 +21,10 @@ public class HLBlocks {
 
     /* Lanterns */
     public static BlockRegistryObject<Block> ADVANCED_LANTERN = register("advanced_lantern", () -> new AdvancedLanternBlock("advanced_lantern", DyeColor.ORANGE, CommonRegistration.LIGHTS_TAB));
+
+    /* Candles */
+
+    public static BlockRegistryObject<Block> ADVANCED_CANDLE = register("advanced_candle", () -> new AdvancedCandleBlock("advanced_candle", DyeColor.ORANGE, CommonRegistration.LIGHTS_TAB));
 
     public static void loadAll() {}
 
