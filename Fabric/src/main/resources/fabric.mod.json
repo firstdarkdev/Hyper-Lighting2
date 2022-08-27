@@ -23,6 +23,9 @@
       ],
       "client": [
         "me.hypherionmc.hyperlighting.client.HyperLightingFabricClient"
+      ],
+      "top_plugin": [
+        "me.hypherionmc.hyperlighting.common.integration.top.TOPIntegration"
       ]
     },
     "mixins": [
@@ -36,6 +39,12 @@
       "minecraft": "1.19.1",
       "java": ">=17",
       "craterlib": "*"
+    },
+    "custom": {
+      "waila:plugins": {
+        "id": "hyperlighting:waila_compat",
+        "initializer": "me.hypherionmc.hyperlighting.common.integration.wthit.HLWTHITPlugin"
+      }
     },
     "accessWidener": "hyperlighting.aw"
   }

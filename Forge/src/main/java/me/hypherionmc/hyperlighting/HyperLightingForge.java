@@ -8,12 +8,14 @@ import me.hypherionmc.hyperlighting.common.entities.NeonFlyEntity;
 import me.hypherionmc.hyperlighting.common.init.CommonRegistration;
 import me.hypherionmc.hyperlighting.common.init.HLBlockEntities;
 import me.hypherionmc.hyperlighting.common.init.HLEntities;
+import me.hypherionmc.hyperlighting.common.integration.top.TOPIntegration;
 import me.hypherionmc.hyperlighting.common.worldgen.ForgeWorldGen;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.client.ConfigScreenHandler;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -29,6 +31,10 @@ public class HyperLightingForge {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientInit);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::commonInit);
         CommonRegistration.registerAll();
+
+        if (ModList.get().isLoaded(Constants.THE_ONE_PROBE)) {
+            new TOPIntegration().setup();
+        }
 
         ForgeWorldGen.registerAll(FMLJavaModLoadingContext.get().getModEventBus());
         registration.registerEvents();

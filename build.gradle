@@ -57,6 +57,10 @@ subprojects {
             name = "Curseforge Maven"
             url 'https://cfa2.cursemaven.com'
         }
+
+        maven { url = "https://maven.k-4u.nl" }
+        maven { url = "https://maven.wispforest.io/" }
+        maven { url "https://maven.bai.lol" }
     }
 
 

@@ -90,6 +90,10 @@ dependencies {
 
     // Shimmer
     implementation fg.deobf("com.lowdragmc.shimmer:Shimmer-forge-1.19.1:${shimmer_version}")
+
+    // The One Probe
+    implementation "mcjty.theoneprobe:theoneprobe:${top_version}:api"
+
 }
 
 tasks.withType(JavaCompile) {

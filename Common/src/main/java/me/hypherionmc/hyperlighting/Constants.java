@@ -12,4 +12,6 @@ public class Constants {
 	public static ResourceLocation rl(String name) {
 		return new ResourceLocation(MOD_ID, name);
 	}
+
+	public static final String THE_ONE_PROBE = "theoneprobe";
 }

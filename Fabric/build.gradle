@@ -6,6 +6,10 @@ plugins {
 
 archivesBaseName = "${mod_name}-fabric-${minecraft_version}"
 
+repositories {
+    maven { url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/" }
+}
+
 dependencies {
     minecraft "com.mojang:minecraft:${minecraft_version}"
     mappings loom.officialMojangMappings()
@@ -32,6 +36,17 @@ dependencies {
     modImplementation ("com.lowdragmc.shimmer:Shimmer-fabric-1.19.1:${shimmer_version}") {
         exclude(group: "net.fabricmc.fabric-api")
     }
+
+    // The One Probe Fabric
+    modCompileOnly("mcjty.theoneprobe:theoneprobe-fabric:${top_fabric}")
+
+    // WTHIT
+    // compile against the API
+    modCompileOnly "mcp.mobius.waila:wthit-api:fabric-${wthitVersion}"
+
+    // run against the full jar
+    modRuntimeOnly "mcp.mobius.waila:wthit:fabric-${wthitVersion}"
+    modRuntimeOnly "lol.bai:badpackets:fabric-0.2.0"
 }
 
 loom {

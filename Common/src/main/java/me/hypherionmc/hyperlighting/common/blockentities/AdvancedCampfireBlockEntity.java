@@ -31,13 +31,10 @@ import java.util.Optional;
  */
 public class AdvancedCampfireBlockEntity extends BlockEntity implements Clearable, ISidedTickable {
 
-    private static final int BURN_COOL_SPEED = 2;
-    private static final int NUM_SLOTS = 4;
-
     private final NonNullList<ItemStack> items = NonNullList.withSize(4, ItemStack.EMPTY);
 
-    private final int[] cookingProgress = new int[4];
-    private final int[] cookingTime = new int[4];
+    public final int[] cookingProgress = new int[4];
+    public final int[] cookingTime = new int[4];
 
     private final RecipeManager.CachedCheck<Container, CampfireCookingRecipe> quickCheck = RecipeManager.createCheck(RecipeType.CAMPFIRE_COOKING);
 
@@ -135,7 +132,7 @@ public class AdvancedCampfireBlockEntity extends BlockEntity implements Clearabl
         }
     }
 
-    protected void saveAdditional(CompoundTag compoundTag) {
+    public void saveAdditional(CompoundTag compoundTag) {
         super.saveAdditional(compoundTag);
         ContainerHelper.saveAllItems(compoundTag, this.items, true);
         compoundTag.putIntArray("CookingTimes", this.cookingProgress);

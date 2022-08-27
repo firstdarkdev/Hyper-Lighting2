@@ -23,8 +23,8 @@ minecraft {
 }
 
 dependencies {
-     compileOnly group:'org.spongepowered', name:'mixin', version:'0.8.5'
-     compileOnly("me.hypherionmc.craterlib:CraterLib-common-1.19.1:${craterlib_version}")
+    compileOnly group:'org.spongepowered', name:'mixin', version:'0.8.5'
+    compileOnly("me.hypherionmc.craterlib:CraterLib-common-1.19.1:${craterlib_version}")
     compileOnly("com.lowdragmc.shimmer:Shimmer-common-1.19.1:${shimmer_version}")
 }
 
