@@ -71,7 +71,7 @@ public class AdvancedCandleBlock extends HorizontalDirectionalBlock implements D
 
         public AdvancedCandleBlock(String name, DyeColor color, CreativeModeTab tab) {
             super(Properties.of(Material.WOOD).noCollission().instabreak().lightLevel(BlockStateUtils.createLightLevelFromLitBlockState(15)));
-            this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH).setValue(LIT, CommonRegistration.config.torchConfig.litByDefault).setValue(COLOR, color));
+            this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH).setValue(LIT, CommonRegistration.config.candleConfig.litByDefault).setValue(COLOR, color));
             this.color = color;
 
             HLItems.register(name, () -> new BlockItemDyable(this, new Item.Properties().tab(tab)));
@@ -101,7 +101,7 @@ public class AdvancedCandleBlock extends HorizontalDirectionalBlock implements D
             } else {
                 state = state.setValue(ATTACH_FACE, AttachFace.WALL).setValue(FACING, direction);
             }
-            return state.setValue(LIT, CommonRegistration.config.torchConfig.litByDefault);
+            return state.setValue(LIT, CommonRegistration.config.candleConfig.litByDefault);
         }
 
         @Override
@@ -160,7 +160,7 @@ public class AdvancedCandleBlock extends HorizontalDirectionalBlock implements D
                         player.setItemInHand(handIn, stack);
                     }
                     return InteractionResult.CONSUME;
-                } else if (!CommonRegistration.config.torchConfig.requiresTool) {
+                } else if (!CommonRegistration.config.candleConfig.requiresTool) {
                     state = state.cycle(LIT);
                     level.setBlock(pos, state, 3);
                     level.sendBlockUpdated(pos, state, state, 3);

@@ -1,4 +1,4 @@
-package me.hypherionmc.hyperlighting.common.config;
+package me.hypherionmc.hyperlighting.client.config;
 
 import me.hypherionmc.craterlib.common.config.ModuleConfig;
 import me.hypherionmc.craterlib.common.config.annotations.SubConfig;
@@ -24,16 +24,13 @@ public class HyperLightingClientConfig extends ModuleConfig {
     @SubConfig
     public CampfireConfig campfireConfig = new CampfireConfig();
 
-    public HyperLightingClientConfig() {
-        super(Constants.MOD_ID, "hyperlighting-client");
     @Path("candleConfig")
     @SpecComment("Candle Configuration")
     @SubConfig
     public CandleConfig candleConfig = new CandleConfig();
 
-    public HyperLightingConfig() {
-        super(Constants.MOD_ID, "hyperlighting-common");
-        registerAndSetup(this);
+    public HyperLightingClientConfig() {
+        super(Constants.MOD_ID, "hyperlighting-client");
     }
 
     @Override
