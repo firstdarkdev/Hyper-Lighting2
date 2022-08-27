@@ -7,7 +7,7 @@ import me.hypherionmc.hyperlighting.common.init.CommonRegistration;
 import me.hypherionmc.nightconfig.core.conversion.Path;
 import me.hypherionmc.nightconfig.core.conversion.SpecComment;
 
-public class HyperLightingConfig extends ModuleConfig {
+public class HyperLightingClientConfig extends ModuleConfig {
 
     @Path("torchConfig")
     @SpecComment("Torch Configuration")
@@ -19,6 +19,13 @@ public class HyperLightingConfig extends ModuleConfig {
     @SubConfig
     public LanternConfig lanternConfig = new LanternConfig();
 
+    @Path("campfireConfig")
+    @SpecComment("Campfire Configuration")
+    @SubConfig
+    public CampfireConfig campfireConfig = new CampfireConfig();
+
+    public HyperLightingClientConfig() {
+        super(Constants.MOD_ID, "hyperlighting-client");
     @Path("candleConfig")
     @SpecComment("Candle Configuration")
     @SubConfig
@@ -42,6 +49,10 @@ public class HyperLightingConfig extends ModuleConfig {
         @Path("requiresTool")
         @SpecComment("Is the Torch Lighter tool needed to light torches")
         public boolean requiresTool = true;
+
+        @Path("coloredLighting")
+        @SpecComment("Should Torches emit colored Lighting when SHIMMER is installed")
+        public boolean coloredLighting = true;
     }
 
     public static class LanternConfig {
@@ -52,6 +63,24 @@ public class HyperLightingConfig extends ModuleConfig {
         @Path("requiresTool")
         @SpecComment("Is the Torch Lighter tool needed to light Lanterns")
         public boolean requiresTool = true;
+
+        @Path("coloredLighting")
+        @SpecComment("Should Lanterns emit colored Lighting when SHIMMER is installed")
+        public boolean coloredLighting = true;
+    }
+
+    public static class CampfireConfig {
+        @Path("litByDefault")
+        @SpecComment("Should Campfires be lit by default when placed")
+        public boolean litByDefault = false;
+
+        @Path("requiresTool")
+        @SpecComment("Is the Torch Lighter tool needed to light Campfires")
+        public boolean requiresTool = true;
+
+        @Path("coloredLighting")
+        @SpecComment("Should Campfires emit colored Lighting when SHIMMER is installed")
+        public boolean coloredLighting = true;
     }
 
     public static class CandleConfig {
@@ -62,5 +91,9 @@ public class HyperLightingConfig extends ModuleConfig {
         @Path("requiresTool")
         @SpecComment("Is the Torch Lighter tool needed to light Candles")
         public boolean requiresTool = true;
+
+        @Path("coloredLighting")
+        @SpecComment("Should Candles emit colored Lighting when SHIMMER is installed")
+        public boolean coloredLighting = true;
     }
 }

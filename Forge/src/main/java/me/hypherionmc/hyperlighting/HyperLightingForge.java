@@ -2,11 +2,14 @@ package me.hypherionmc.hyperlighting;
 
 import me.hypherionmc.craterlib.client.gui.config.CraterConfigScreen;
 import me.hypherionmc.hyperlighting.client.init.ClientRegistration;
+import me.hypherionmc.hyperlighting.client.renderer.blockentity.AdvancedCampfireRenderer;
 import me.hypherionmc.hyperlighting.client.renderer.entity.NeonFlyRenderer;
 import me.hypherionmc.hyperlighting.common.entities.NeonFlyEntity;
 import me.hypherionmc.hyperlighting.common.init.CommonRegistration;
+import me.hypherionmc.hyperlighting.common.init.HLBlockEntities;
 import me.hypherionmc.hyperlighting.common.init.HLEntities;
 import me.hypherionmc.hyperlighting.common.worldgen.ForgeWorldGen;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.level.levelgen.Heightmap;
@@ -34,6 +37,7 @@ public class HyperLightingForge {
     public void clientInit(FMLClientSetupEvent event) {
         registration.registerAll();
 
+        BlockEntityRenderers.register(HLBlockEntities.CAMPFIRE.get(), AdvancedCampfireRenderer::new);
         EntityRenderers.register(HLEntities.NEONFLY.get(), NeonFlyRenderer::new);
     }
 

@@ -9,6 +9,7 @@ import me.hypherionmc.hyperlighting.common.init.HLBlocks;
 import me.hypherionmc.hyperlighting.common.init.HLItems;
 import me.hypherionmc.hyperlighting.integration.HyperLightingIntegrations;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 
 /**
  * @author HypherionSA

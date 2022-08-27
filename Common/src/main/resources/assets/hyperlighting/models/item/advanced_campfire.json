@@ -1,0 +1,21 @@
+{
+  "parent": "hyperlighting:block/campfire_base",
+  "overrides": [
+    { "predicate": { "color": 0 }, "model": "hyperlighting:block/campfire/white_campfire_lit" },
+    { "predicate": { "color": 1 }, "model": "hyperlighting:block/campfire/orange_campfire_lit" },
+    { "predicate": { "color": 2 }, "model": "hyperlighting:block/campfire/magenta_campfire_lit" },
+    { "predicate": { "color": 3 }, "model": "hyperlighting:block/campfire/light_blue_campfire_lit" },
+    { "predicate": { "color": 4 }, "model": "hyperlighting:block/campfire/yellow_campfire_lit" },
+    { "predicate": { "color": 5 }, "model": "hyperlighting:block/campfire/lime_campfire_lit" },
+    { "predicate": { "color": 6 }, "model": "hyperlighting:block/campfire/pink_campfire_lit" },
+    { "predicate": { "color": 7 }, "model": "hyperlighting:block/campfire/gray_campfire_lit" },
+    { "predicate": { "color": 8 }, "model": "hyperlighting:block/campfire/light_gray_campfire_lit" },
+    { "predicate": { "color": 9 }, "model": "hyperlighting:block/campfire/cyan_campfire_lit" },
+    { "predicate": { "color": 10 }, "model": "hyperlighting:block/campfire/purple_campfire_lit" },
+    { "predicate": { "color": 11 }, "model": "hyperlighting:block/campfire/blue_campfire_lit" },
+    { "predicate": { "color": 12 }, "model": "hyperlighting:block/campfire/brown_campfire_lit" },
+    { "predicate": { "color": 13 }, "model": "hyperlighting:block/campfire/green_campfire_lit" },
+    { "predicate": { "color": 14 }, "model": "hyperlighting:block/campfire/red_campfire_lit" },
+    { "predicate": { "color": 15 }, "model": "hyperlighting:block/campfire/black_campfire_lit" }
+  ]
+}

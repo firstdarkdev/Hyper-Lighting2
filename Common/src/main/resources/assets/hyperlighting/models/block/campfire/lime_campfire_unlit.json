@@ -1,0 +1,7 @@
+{
+  "parent": "hyperlighting:block/campfire_base_unlit",
+  "textures": {
+    "0": "hyperlighting:block/campfire/lime_campfire_log",
+    "particle": "hyperlighting:block/campfire/lime_campfire_log"
+  }
+}

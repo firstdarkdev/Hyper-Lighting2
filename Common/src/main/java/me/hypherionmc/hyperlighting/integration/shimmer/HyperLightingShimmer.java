@@ -4,8 +4,10 @@ import com.lowdragmc.shimmer.client.light.ColorPointLight;
 import com.lowdragmc.shimmer.client.light.LightManager;
 import me.hypherionmc.craterlib.common.item.BlockItemDyable;
 import me.hypherionmc.craterlib.util.RenderUtils;
+import me.hypherionmc.hyperlighting.common.blocks.AdvancedCampfire;
 import me.hypherionmc.hyperlighting.common.blocks.AdvancedLanternBlock;
 import me.hypherionmc.hyperlighting.common.blocks.AdvancedTorchBlock;
+import me.hypherionmc.hyperlighting.common.init.CommonRegistration;
 import me.hypherionmc.hyperlighting.common.init.HLBlocks;
 import net.minecraft.world.item.DyeColor;
 
@@ -27,7 +29,7 @@ public class HyperLightingShimmer {
 
     private static void registerBlocks() {
         LightManager.INSTANCE.registerBlockLight(HLBlocks.ADVANCED_TORCH.get(), (state, blockPos) -> {
-            if (state.getValue(AdvancedTorchBlock.LIT)) {
+            if (state.getValue(AdvancedTorchBlock.LIT) && CommonRegistration.config.torchConfig.coloredLighting) {
                 DyeColor color = state.getValue(AdvancedTorchBlock.COLOR);
                 return new ColorPointLight.Template(10, RenderUtils.alphaColorFromDye(color, 1f));
             }
@@ -35,10 +37,18 @@ public class HyperLightingShimmer {
         });
 
         LightManager.INSTANCE.registerBlockLight(HLBlocks.ADVANCED_LANTERN.get(), (state, blockPos) -> {
-            if (state.getValue(AdvancedLanternBlock.LIT)) {
+            if (state.getValue(AdvancedLanternBlock.LIT) && CommonRegistration.config.lanternConfig.coloredLighting) {
                 DyeColor color = state.getValue(AdvancedLanternBlock.COLOR);
                 return new ColorPointLight.Template(10, RenderUtils.alphaColorFromDye(color, 1f));
             }
+            return null;
+        });
+
+        LightManager.INSTANCE.registerBlockLight(HLBlocks.ADVANCED_CAMPFIRE.get(), (state, blockPos) -> {
+          if (state.getValue(AdvancedCampfire.LIT) && CommonRegistration.config.campfireConfig.coloredLighting) {
+              DyeColor color = state.getValue(AdvancedCampfire.COLOR);
+              return new ColorPointLight.Template(10, RenderUtils.alphaColorFromDye(color, 1f));
+          }
             return null;
         });
     }

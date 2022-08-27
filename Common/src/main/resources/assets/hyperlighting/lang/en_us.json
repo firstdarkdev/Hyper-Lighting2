@@ -2,6 +2,7 @@
   "block.hyperlighting.advanced_torch": "Advanced Torch (%s)",
   "block.hyperlighting.advanced_lantern": "Advanced Lantern (%s)",
   "block.hyperlighting.advanced_candle": "Advanced Candle (%s)",
+  "block.hyperlighting.advanced_campfire": "Advanced Campfire (%s)",
 
   "item.hyperlighting.lighter_tool": "Torch Lighter Tool",
 
