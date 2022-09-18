@@ -83,7 +83,7 @@ dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     compileOnly project(":Common")
     annotationProcessor 'org.spongepowered:mixin:0.8.4-SNAPSHOT:processor'
-    implementation fg.deobf("me.hypherionmc.craterlib:CraterLib-forge-1.19.1:${craterlib_version}")
+    implementation fg.deobf("me.hypherionmc.craterlib:CraterLib-forge-${minecraft_version}:${craterlib_version}")
 
     // Rubidium
     implementation fg.deobf("curse.maven:rubidium-574856:${ribidium_version}")

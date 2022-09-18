@@ -17,7 +17,7 @@ dependencies {
     modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
     implementation project(":Common")
 
-    modApi("me.hypherionmc.craterlib:CraterLib-fabric-1.19.1:${craterlib_version}") {
+    modApi("me.hypherionmc.craterlib:CraterLib-fabric-${minecraft_version}:${craterlib_version}") {
         exclude(group: "net.fabricmc.fabric-api")
     }
 
@@ -26,11 +26,11 @@ dependencies {
     }
 
     // Sodium
-    modImplementation ("curse.maven:sodium-394468:${sodium_version}") {
+    /*modImplementation ("curse.maven:sodium-394468:${sodium_version}") {
         exclude(group: "net.fabricmc.fabric-api")
     }
     // This is a dependency of Sodium....
-    implementation 'org.joml:joml:1.10.4'
+    implementation 'org.joml:joml:1.10.4'*/
 
     // Shimmer
     modImplementation ("com.lowdragmc.shimmer:Shimmer-fabric-1.19.1:${shimmer_version}") {
