@@ -5,6 +5,7 @@ import com.lowdragmc.shimmer.client.light.LightManager;
 import me.hypherionmc.craterlib.common.item.BlockItemDyable;
 import me.hypherionmc.craterlib.util.RenderUtils;
 import me.hypherionmc.hyperlighting.common.blocks.AdvancedCampfire;
+import me.hypherionmc.hyperlighting.common.blocks.AdvancedCandleBlock;
 import me.hypherionmc.hyperlighting.common.blocks.AdvancedLanternBlock;
 import me.hypherionmc.hyperlighting.common.blocks.AdvancedTorchBlock;
 import me.hypherionmc.hyperlighting.common.init.CommonRegistration;
@@ -49,6 +50,14 @@ public class HyperLightingShimmer {
               DyeColor color = state.getValue(AdvancedCampfire.COLOR);
               return new ColorPointLight.Template(10, RenderUtils.alphaColorFromDye(color, 1f));
           }
+            return null;
+        });
+
+        LightManager.INSTANCE.registerBlockLight(HLBlocks.ADVANCED_CANDLE.get(), (state, blockPos) -> {
+            if (state.getValue(AdvancedCandleBlock.LIT) && CommonRegistration.config.candleConfig.coloredLighting) {
+                DyeColor color = state.getValue(AdvancedCandleBlock.COLOR);
+                return new ColorPointLight.Template(10, RenderUtils.alphaColorFromDye(color, 1f));
+            }
             return null;
         });
     }
