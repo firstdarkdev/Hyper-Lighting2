@@ -3,6 +3,7 @@
   "block.hyperlighting.advanced_lantern": "Advanced Lantern (%s)",
   "block.hyperlighting.advanced_candle": "Advanced Candle (%s)",
   "block.hyperlighting.advanced_campfire": "Advanced Campfire (%s)",
+  "block.hyperlighting.solar_panel": "Solar Panel",
 
   "item.hyperlighting.lighter_tool": "Torch Lighter Tool",
 
@@ -13,7 +14,17 @@
   "cl.hyperlightingconfig.title": "Hyper Lighting Config",
   "cl.torchconfig.litbydefault": "Lit when Placed",
   "cl.torchconfig.requirestool": "Requires Torch Lighter",
+  "cl.torchconfig.coloredlighting": "Shimmer Integration",
   "cl.lanternconfig.litbydefault": "Lit when Placed",
   "cl.lanternconfig.requirestool": "Requires Torch Lighter",
-  "itemGroup.hyperlighting.lighting": "Hyper Lighting (Lights)"
+  "cl.lanternconfig.coloredlighting": "Shimmer Integration",
+  "cl.campfireconfig.litbydefault": "Lit when Placed",
+  "cl.campfireconfig.requirestool": "Requires Torch Lighter",
+  "cl.campfireconfig.coloredlighting": "Shimmer Integration",
+  "cl.candleconfig.litbydefault": "Lit when Placed",
+  "cl.candleconfig.requirestool": "Requires Torch Lighter",
+  "cl.candleconfig.coloredlighting": "Shimmer Integration",
+
+  "itemGroup.hyperlighting.lighting": "Hyper Lighting (Lights)",
+  "itemGroup.hyperlighting.machines": "Hyper Lighting (Machines)"
 }
