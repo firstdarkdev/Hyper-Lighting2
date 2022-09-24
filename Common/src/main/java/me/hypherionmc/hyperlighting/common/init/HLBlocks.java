@@ -30,6 +30,9 @@ public class HLBlocks {
     /* Machines */
     public static BlockRegistryObject<Block> SOLAR_PANEL = register("solar_panel", () -> new SolarPanel("solar_panel"));
 
+    /* Other */
+    public static BlockRegistryObject<Block> BATTERY_NEON = register("battery_neon", () -> new BatteryNeon("battery_neon"));
+
 
     public static void loadAll() {}
 

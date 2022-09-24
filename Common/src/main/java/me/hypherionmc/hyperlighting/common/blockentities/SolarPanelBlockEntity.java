@@ -66,4 +66,8 @@ public class SolarPanelBlockEntity extends CraterBlockEntity implements ITickabl
 
         return Optional.empty();
     }
+
+    public CustomEnergyStorage getEnergyStorage() {
+        return energyStorage;
+    }
 }

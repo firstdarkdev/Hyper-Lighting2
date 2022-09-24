@@ -4,6 +4,7 @@ import me.hypherionmc.craterlib.systems.reg.RegistrationProvider;
 import me.hypherionmc.craterlib.systems.reg.RegistryObject;
 import me.hypherionmc.hyperlighting.Constants;
 import me.hypherionmc.hyperlighting.common.items.LighterTool;
+import me.hypherionmc.hyperlighting.common.items.WirelessBattery;
 import net.minecraft.core.Registry;
 import net.minecraft.world.item.Item;
 
@@ -14,6 +15,9 @@ public class HLItems {
 
     /* Tools */
     public static RegistryObject<Item> TORCH_TOOL = register("lighter_tool", LighterTool::new);
+
+    /* Machines */
+    public static RegistryObject<Item> WIRELESS_BATTERY = register("wireless_battery", WirelessBattery::new);
 
     public static void loadAll() {}
 

@@ -4,8 +4,10 @@
   "package": "me.hypherionmc.hyperlighting.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "access.MenuTypeAccess"
   ],
   "client": [
+    "access.MenuScreensAccess"
   ],
   "server": [
   ],

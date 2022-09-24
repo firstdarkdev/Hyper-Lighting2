@@ -4,8 +4,10 @@
   "block.hyperlighting.advanced_candle": "Advanced Candle (%s)",
   "block.hyperlighting.advanced_campfire": "Advanced Campfire (%s)",
   "block.hyperlighting.solar_panel": "Solar Panel",
+  "block.hyperlighting.battery_neon": "Battery Fluorescent Light",
 
   "item.hyperlighting.lighter_tool": "Torch Lighter Tool",
+  "item.hyperlighting.wireless_battery": "Wireless Battery",
 
   "subtitles.torch_ignite": "Flame Ignite Sound",
 

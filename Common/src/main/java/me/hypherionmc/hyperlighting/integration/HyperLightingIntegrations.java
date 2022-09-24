@@ -1,6 +1,6 @@
 package me.hypherionmc.hyperlighting.integration;
 
-import me.hypherionmc.craterlib.platform.Services;
+import me.hypherionmc.craterlib.platform.Platform;
 import me.hypherionmc.hyperlighting.integration.shimmer.HyperLightingShimmer;
 
 /**
@@ -14,7 +14,7 @@ public class HyperLightingIntegrations {
     }
 
     public static void registerClient() {
-        if (Services.PLATFORM.isModLoaded("shimmer")) {
+        if (Platform.LOADER.isModLoaded("shimmer")) {
             HyperLightingShimmer.registerAll();
         }
     }
