@@ -1,4 +1,4 @@
-package me.hypherionmc.hyperlighting.common.integration.wthit;
+package me.hypherionmc.hyperlighting.common.integration.wthit.providers;
 
 import mcp.mobius.waila.api.IBlockAccessor;
 import mcp.mobius.waila.api.IBlockComponentProvider;

@@ -1,4 +1,4 @@
-package me.hypherionmc.hyperlighting.common.integration.wthit;
+package me.hypherionmc.hyperlighting.common.integration.wthit.dataproviders;
 
 import mcp.mobius.waila.api.IPluginConfig;
 import mcp.mobius.waila.api.IServerAccessor;
