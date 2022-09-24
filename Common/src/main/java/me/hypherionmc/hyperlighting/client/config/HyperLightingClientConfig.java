@@ -31,6 +31,7 @@ public class HyperLightingClientConfig extends ModuleConfig {
 
     public HyperLightingClientConfig() {
         super(Constants.MOD_ID, "hyperlighting-client");
+        registerAndSetup(this);
     }
 
     @Override
