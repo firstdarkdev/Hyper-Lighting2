@@ -3,7 +3,7 @@ package me.hypherionmc.hyperlighting.client.init;
 import me.hypherionmc.craterlib.client.events.ColorRegistrationEvent;
 import me.hypherionmc.craterlib.client.registry.ClientRegistry;
 import me.hypherionmc.craterlib.events.CraterEventBus;
-import me.hypherionmc.craterlib.platform.Platform;
+import me.hypherionmc.craterlib.platform.ClientPlatform;
 import me.hypherionmc.hyperlighting.client.gui.BatteryNeonScreen;
 import me.hypherionmc.hyperlighting.common.init.HLBlocks;
 import me.hypherionmc.hyperlighting.common.init.HLContainers;
@@ -19,7 +19,7 @@ import me.hypherionmc.hyperlighting.mixin.access.MenuScreensAccess;
 public class ClientRegistration {
 
     public void registerAll() {
-        Platform.CLIENT_HELPER.registerCustomRenderTypes(HLBlocks.BLOCKS.getEntries(), HLItems.ITEMS.getEntries());
+        ClientPlatform.CLIENT_HELPER.registerCustomRenderTypes(HLBlocks.BLOCKS.getEntries(), HLItems.ITEMS.getEntries());
         HyperLightingIntegrations.registerClient();
         MenuScreensAccess.crater_register(HLContainers.BATTERY_NEON.get(), BatteryNeonScreen::new);
 

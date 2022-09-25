@@ -3,7 +3,6 @@ package me.hypherionmc.hyperlighting.common.init;
 import me.hypherionmc.craterlib.client.gui.tabs.CreativeTabBuilder;
 import me.hypherionmc.craterlib.network.CraterNetworkHandler;
 import me.hypherionmc.craterlib.platform.Platform;
-import me.hypherionmc.hyperlighting.Constants;
 import me.hypherionmc.hyperlighting.client.config.HyperLightingClientConfig;
 import me.hypherionmc.hyperlighting.integration.HyperLightingIntegrations;
 import net.minecraft.world.item.CreativeModeTab;
