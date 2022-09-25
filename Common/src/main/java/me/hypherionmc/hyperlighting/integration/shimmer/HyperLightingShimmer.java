@@ -10,6 +10,7 @@ import me.hypherionmc.hyperlighting.common.blocks.AdvancedLanternBlock;
 import me.hypherionmc.hyperlighting.common.blocks.AdvancedTorchBlock;
 import me.hypherionmc.hyperlighting.common.init.CommonRegistration;
 import me.hypherionmc.hyperlighting.common.init.HLBlocks;
+import me.hypherionmc.hyperlighting.common.init.HLItems;
 import net.minecraft.world.item.DyeColor;
 
 /**
@@ -26,6 +27,8 @@ public class HyperLightingShimmer {
     private static void registerItems() {
         LightManager.INSTANCE.registerItemLight(HLBlocks.ADVANCED_TORCH.asItem(), stack -> new ColorPointLight.Template(stack.getCount() / 10 + 6, RenderUtils.alphaColorFromDye(((BlockItemDyable)stack.getItem()).getColor(stack), 1f)));
         LightManager.INSTANCE.registerItemLight(HLBlocks.ADVANCED_LANTERN.asItem(), stack -> new ColorPointLight.Template(stack.getCount() / 10 + 6, RenderUtils.alphaColorFromDye(((BlockItemDyable)stack.getItem()).getColor(stack), 1f)));
+
+        LightManager.INSTANCE.registerItemLight(HLItems.CANDLE_IN_A_JAR.get(), stack -> new ColorPointLight.Template(10, RenderUtils.alphaColorFromDye(DyeColor.WHITE, 1f)));
     }
 
     private static void registerBlocks() {
