@@ -1,6 +1,7 @@
 package me.hypherionmc.hyperlighting.common.blockentities;
 
 import me.hypherionmc.craterlib.api.blockentities.ITickable;
+import me.hypherionmc.craterlib.api.blockentities.caps.ForgeCapability;
 import me.hypherionmc.craterlib.common.blockentity.CraterBlockEntity;
 import me.hypherionmc.craterlib.systems.SimpleInventory;
 import me.hypherionmc.craterlib.systems.energy.CustomEnergyStorage;
@@ -8,11 +9,17 @@ import me.hypherionmc.hyperlighting.common.blocks.BatteryNeon;
 import me.hypherionmc.hyperlighting.common.init.HLBlockEntities;
 import me.hypherionmc.hyperlighting.common.items.WirelessBattery;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.Containers;
+import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.DyeItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+
+import java.util.Optional;
 
 /**
  * @author HypherionSA
@@ -61,6 +68,15 @@ public class BatteryNeonBlockEntity extends CraterBlockEntity implements ITickab
     @Override
     public void sendUpdates() {
         BlockState state = level.getBlockState(this.getBlockPos());
+        if (inventory.getItemHandler().getItem(1).getItem() instanceof DyeItem dyeItem) {
+            if (state.getValue(BatteryNeon.COLOR) != dyeItem.getDyeColor()) {
+                state = state.setValue(BatteryNeon.COLOR, dyeItem.getDyeColor());
+                level.setBlock(this.getBlockPos(), state, 2);
+            }
+        } else {
+            state = state.setValue(BatteryNeon.COLOR, DyeColor.WHITE);
+            level.setBlock(this.getBlockPos(), state, 2);
+        }
         this.level.blockEntityChanged(this.getBlockPos());
         this.level.sendBlockUpdated(this.getBlockPos(), this.level.getBlockState(this.getBlockPos()), state, 3);
         this.setChanged();
@@ -96,5 +112,29 @@ public class BatteryNeonBlockEntity extends CraterBlockEntity implements ITickab
             }
         }
         this.sendUpdates();
+    }
+
+    @Override
+    public void setRemoved() {
+        dropInventory();
+        super.setRemoved();
+    }
+
+    public void dropInventory() {
+        if (!inventory.getItemHandler().getItem(0).isEmpty()) {
+            Containers.dropItemStack(level, worldPosition.getX(), worldPosition.getY(), worldPosition.getZ(), inventory.getItemHandler().getItem(0));
+        }
+
+        if (!inventory.getItemHandler().getItem(1).isEmpty()) {
+            Containers.dropItemStack(level, worldPosition.getX(), worldPosition.getY(), worldPosition.getZ(), inventory.getItemHandler().getItem(1));
+        }
+    }
+
+    @Override
+    public <T> Optional<T> getForgeCapability(ForgeCapability capability, Direction side) {
+        if (capability == ForgeCapability.ENERGY && side == null) {
+            return (Optional<T>) Optional.of(energyStorage);
+        }
+        return Optional.empty();
     }
 }

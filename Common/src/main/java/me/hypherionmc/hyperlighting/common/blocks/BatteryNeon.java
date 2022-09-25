@@ -33,6 +33,7 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -50,6 +51,8 @@ public class BatteryNeon extends BaseEntityBlock implements DyableBlock {
     public static final BooleanProperty LIT = BlockStateProperties.LIT;
     public static final DirectionProperty FACING = BlockStateProperties.FACING;
 
+    public static final EnumProperty<DyeColor> COLOR = EnumProperty.create("color", DyeColor.class);
+
     private static final VoxelShape DOWN_BOUNDING_BOX = Block.box(0, 0, 7.008, 16, 3.008, 8.992);
     private static final VoxelShape UP_BOUNDING_BOX = Block.box(0, 12.8, 7.008, 16, 16, 8.992);
     private static final VoxelShape SOUTH_BOUNDING_BOX = Block.box(0, 7.008, 12.992, 16, 8.992, 16);
@@ -59,7 +62,7 @@ public class BatteryNeon extends BaseEntityBlock implements DyableBlock {
 
     public BatteryNeon(String name) {
         super(Properties.of(Material.GLASS).sound(SoundType.GLASS).lightLevel(BlockStateUtils.createLightLevelFromLitBlockState(14)));
-        this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH));
+        this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH).setValue(COLOR, DyeColor.WHITE));
 
         HLItems.ITEMS.register(name, () -> new BlockItemDyable(this, new Item.Properties().tab(CommonRegistration.LIGHTS_TAB)));
     }
@@ -111,14 +114,14 @@ public class BatteryNeon extends BaseEntityBlock implements DyableBlock {
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(LIT, FACING);
+        builder.add(LIT, FACING, COLOR);
         super.createBlockStateDefinition(builder);
     }
 
     @Nullable
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
-        return this.defaultBlockState().setValue(FACING, context.getClickedFace()).setValue(LIT, false);
+        return this.defaultBlockState().setValue(FACING, context.getClickedFace()).setValue(LIT, false).setValue(COLOR, DyeColor.WHITE);
 
     }
 
@@ -131,13 +134,10 @@ public class BatteryNeon extends BaseEntityBlock implements DyableBlock {
     public BlockColor dyeHandler() {
         return (state, world, pos, tintIndex) -> {
             if (state.getValue(LIT)) {
-                if (world != null && world.getBlockEntity(pos) instanceof BatteryNeonBlockEntity be) {
-                    return (be.getInventory().getItemHandler().getItem(1).getItem() instanceof DyeItem dyeItem ? dyeItem.getDyeColor().getMaterialColor().col : DyeColor.WHITE.getTextColor());
-                }
+                return state.getValue(COLOR).getMaterialColor().col;
             } else {
                 return DyeColor.BLACK.getMaterialColor().col;
             }
-            return DyeColor.BLACK.getMaterialColor().col;
         };
     }
 
