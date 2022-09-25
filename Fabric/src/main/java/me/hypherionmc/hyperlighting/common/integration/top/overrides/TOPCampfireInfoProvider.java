@@ -43,7 +43,7 @@ public class TOPCampfireInfoProvider implements IBlockDisplayOverride {
                                 .item(stack)
                                 .horizontal()
                                 .progress(
-                                        (int) ((float) tileCampFire.cookingTime[i] / tileCampFire.cookingProgress[i] * 100),
+                                        (int) ((float) tileCampFire.cookingProgress[i] / tileCampFire.cookingTime[i] * 100),
                                         100,
                                         iProbeInfo.defaultProgressStyle().suffix(" %").alignment(ElementAlignment.ALIGN_TOPLEFT));
                     }
