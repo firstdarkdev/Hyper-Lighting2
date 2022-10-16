@@ -14,7 +14,7 @@
 
   "entity.hyperlighting.neonfly": "Neon Fly",
 
-  "cl.hyperlightingconfig.title": "Hyper Lighting Config",
+  "cl.hyperlightingclientconfig.title": "Hyper Lighting Config",
   "cl.torchconfig.litbydefault": "Lit when Placed",
   "cl.torchconfig.requirestool": "Requires Torch Lighter",
   "cl.torchconfig.coloredlighting": "Shimmer Integration",

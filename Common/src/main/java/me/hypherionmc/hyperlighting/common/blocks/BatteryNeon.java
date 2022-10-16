@@ -53,12 +53,12 @@ public class BatteryNeon extends BaseEntityBlock implements DyableBlock {
 
     public static final EnumProperty<DyeColor> COLOR = EnumProperty.create("color", DyeColor.class);
 
-    private static final VoxelShape DOWN_BOUNDING_BOX = Block.box(0, 0, 7.008, 16, 3.008, 8.992);
-    private static final VoxelShape UP_BOUNDING_BOX = Block.box(0, 12.8, 7.008, 16, 16, 8.992);
-    private static final VoxelShape SOUTH_BOUNDING_BOX = Block.box(0, 7.008, 12.992, 16, 8.992, 16);
-    private static final VoxelShape EAST_BOUNDING_BOX = Block.box(0, 7.008, 16, 12.8, 8.992, 16);
-    private static final VoxelShape WEST_BOUNDING_BOX = Block.box(0, 7.008, 0, 3.2, 8.992, 16);
-    private static final VoxelShape NORTH_BOUNDING_BOX = Block.box(0, 7.008, 0.336, 16, 8.992, 3.328);
+    private static final VoxelShape DOWN_BOUNDING_BOX = Block.box(0, 0.005, 7, 16, 3.005, 9);
+    private static final VoxelShape UP_BOUNDING_BOX = Block.box(0, 12.995, 7, 16, 15.995, 9);
+    private static final VoxelShape SOUTH_BOUNDING_BOX = Block.box(0, 7, 12.995, 16, 9, 15.995);
+    private static final VoxelShape EAST_BOUNDING_BOX = Block.box(12.995, 7, 0, 15.995, 9, 16);
+    private static final VoxelShape WEST_BOUNDING_BOX = Block.box(0.005, 7, 0, 3.005, 9, 16);
+    private static final VoxelShape NORTH_BOUNDING_BOX = Block.box(0, 7, 0.005, 16, 9, 3.005);
 
     public BatteryNeon(String name) {
         super(Properties.of(Material.GLASS).sound(SoundType.GLASS).lightLevel(BlockStateUtils.createLightLevelFromLitBlockState(14)));
@@ -69,21 +69,14 @@ public class BatteryNeon extends BaseEntityBlock implements DyableBlock {
 
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        switch (state.getValue(FACING)) {
-            case UP:
-                return DOWN_BOUNDING_BOX;
-            case DOWN:
-            default:
-                return UP_BOUNDING_BOX;
-            case NORTH:
-                return SOUTH_BOUNDING_BOX;
-            case EAST:
-                return WEST_BOUNDING_BOX;
-            case WEST:
-                return EAST_BOUNDING_BOX;
-            case SOUTH:
-                return NORTH_BOUNDING_BOX;
-        }
+        return switch (state.getValue(FACING)) {
+            case UP -> DOWN_BOUNDING_BOX;
+            case DOWN -> UP_BOUNDING_BOX;
+            case NORTH -> SOUTH_BOUNDING_BOX;
+            case EAST -> WEST_BOUNDING_BOX;
+            case WEST -> EAST_BOUNDING_BOX;
+            case SOUTH -> NORTH_BOUNDING_BOX;
+        };
     }
 
     @Override
