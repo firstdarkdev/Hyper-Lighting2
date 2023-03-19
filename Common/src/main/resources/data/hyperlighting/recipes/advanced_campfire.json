@@ -15,5 +15,6 @@
   ],
   "result": {
     "item": "hyperlighting:advanced_campfire"
-  }
+  },
+  "show_notification": true
 }

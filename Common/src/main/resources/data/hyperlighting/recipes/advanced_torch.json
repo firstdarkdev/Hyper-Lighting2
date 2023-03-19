@@ -1,11 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
   "key": {
-    "X": {
-      "tag": "minecraft:wool"
-    },
+    "X": [
+      {
+        "tag": "minecraft:wool"
+      },
+      {
+        "tag": "minecraft:coals"
+      }
+    ],
     "Y": {
-      "item": "minecraft:stick"
+      "tag": "minecraft:logs"
     }
   },
   "pattern": [
@@ -14,6 +19,8 @@
     "   "
   ],
   "result": {
+    "count": 4,
     "item": "hyperlighting:advanced_torch"
-  }
+  },
+  "show_notification": true
 }
