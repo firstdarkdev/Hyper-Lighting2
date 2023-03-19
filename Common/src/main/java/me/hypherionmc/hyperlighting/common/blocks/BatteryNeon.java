@@ -38,6 +38,7 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -173,5 +174,10 @@ public class BatteryNeon extends BaseEntityBlock implements DyableBlock {
         state = state.setValue(LIT, litState);
         worldIn.setBlock(pos, state, 2);
         worldIn.sendBlockUpdated(pos, oldState, state, 4);
+    }
+
+    @Override
+    public List<ItemStack> getDrops(BlockState blockState, LootContext.Builder lootBuilder) {
+        return List.of(new ItemStack(this));
     }
 }
