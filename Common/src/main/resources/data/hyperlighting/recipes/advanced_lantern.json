@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "C": {
+      "item": "minecraft:glass"
+    },
+    "A": {
+      "item": "minecraft:iron_nugget"
+    },
+    "Y": [
+      {
+        "item": "minecraft:torch"
+      },
+      {
+        "item": "hyperlighting:advanced_torch"
+      }
+    ]
+  },
+  "pattern": [
+    "AAA",
+    "CYC",
+    "AAA"
+  ],
+  "result": {
+    "item": "hyperlighting:advanced_lantern"
+  },
+  "show_notification": true
+}

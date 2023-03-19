@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "C": {
+      "item": "minecraft:cobblestone"
+    },
+    "Y": {
+      "item": "minecraft:glass"
+    }
+  },
+  "pattern": [
+    "   ",
+    "YYY",
+    "CCC"
+  ],
+  "result": {
+    "item": "hyperlighting:solar_panel"
+  },
+  "show_notification": true
+}

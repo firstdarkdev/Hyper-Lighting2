@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "C": {
+      "item": "minecraft:redstone"
+    },
+    "L": {
+      "item": "minecraft:cobblestone"
+    }
+  },
+  "pattern": [
+    "   ",
+    "LCL",
+    "LLL"
+  ],
+  "result": {
+    "count": 3,
+    "item": "hyperlighting:wireless_battery"
+  },
+  "show_notification": true
+}

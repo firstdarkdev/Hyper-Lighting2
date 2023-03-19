@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "C": {
+      "item": "minecraft:cobblestone"
+    },
+    "Y": {
+      "item": "minecraft:glass"
+    }
+  },
+  "pattern": [
+    "   ",
+    "CYC",
+    "   "
+  ],
+  "result": {
+    "item": "hyperlighting:battery_neon"
+  },
+  "show_notification": true
+}
