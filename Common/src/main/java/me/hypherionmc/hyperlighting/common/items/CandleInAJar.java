@@ -3,7 +3,6 @@ package me.hypherionmc.hyperlighting.common.items;
 import me.hypherionmc.craterlib.platform.Platform;
 import me.hypherionmc.craterlib.systems.internal.CreativeTabRegistry;
 import me.hypherionmc.hyperlighting.common.init.CommonRegistration;
-import me.hypherionmc.hyperlighting.common.init.HLItems;
 import net.minecraft.world.item.Item;
 
 /**

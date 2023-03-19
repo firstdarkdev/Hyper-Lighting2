@@ -4,7 +4,6 @@ import me.hypherionmc.craterlib.systems.internal.CreativeTabRegistry;
 import me.hypherionmc.hyperlighting.api.SwitchModule;
 import me.hypherionmc.hyperlighting.common.blocks.SolarPanel;
 import me.hypherionmc.hyperlighting.common.init.CommonRegistration;
-import me.hypherionmc.hyperlighting.common.init.HLItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtUtils;
