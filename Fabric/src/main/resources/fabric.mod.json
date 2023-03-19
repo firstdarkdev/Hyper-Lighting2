@@ -38,7 +38,7 @@
       "fabric": "*",
       "minecraft": ">=1.19.4",
       "java": ">=17",
-      "craterlib": "0.0.x"
+      "craterlib": "*"
     },
     "custom": {
       "waila:plugins": {
