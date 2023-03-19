@@ -13,7 +13,7 @@ public class LighterTool extends Item {
 
     public LighterTool() {
         super(new Properties().stacksTo(1)/*.tab(CommonRegistration.LIGHTS_TAB)*/.durability(20));
-        CreativeTabRegistry.setCreativeTab(CommonRegistration.LIGHTS_TAB, HLItems.TORCH_TOOL);
+        CreativeTabRegistry.setCreativeTab(CommonRegistration.LIGHTS_TAB, () -> this);
     }
 
     @Override

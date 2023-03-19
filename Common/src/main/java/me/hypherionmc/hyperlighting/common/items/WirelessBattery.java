@@ -25,7 +25,7 @@ public class WirelessBattery extends Item implements SwitchModule {
 
     public WirelessBattery() {
         super(new Properties().stacksTo(1));
-        CreativeTabRegistry.setCreativeTab(CommonRegistration.MACHINES_TAB, HLItems.WIRELESS_BATTERY);
+        CreativeTabRegistry.setCreativeTab(CommonRegistration.MACHINES_TAB, () -> this);
     }
 
     @Override

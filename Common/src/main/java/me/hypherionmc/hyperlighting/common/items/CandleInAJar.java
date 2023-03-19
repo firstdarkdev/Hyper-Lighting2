@@ -17,7 +17,7 @@ public class CandleInAJar extends Item {
     public CandleInAJar() {
         super(new Properties().stacksTo(1));
         if (Platform.LOADER.isModLoaded("shimmer")) {
-            CreativeTabRegistry.setCreativeTab(CommonRegistration.LIGHTS_TAB, HLItems.CANDLE_IN_A_JAR);
+            CreativeTabRegistry.setCreativeTab(CommonRegistration.LIGHTS_TAB, () -> this);
         }
     }
 
