@@ -1,7 +1,7 @@
 package me.hypherionmc.hyperlighting.common.blockentities;
 
 import me.hypherionmc.craterlib.api.blockentities.ITickable;
-import me.hypherionmc.craterlib.api.blockentities.caps.ForgeCapability;
+import me.hypherionmc.craterlib.api.blockentities.caps.CapabilityHandler;
 import me.hypherionmc.craterlib.common.blockentity.CraterBlockEntity;
 import me.hypherionmc.craterlib.systems.energy.CustomEnergyStorage;
 import me.hypherionmc.hyperlighting.common.blocks.SolarPanel;
@@ -59,8 +59,8 @@ public class SolarPanelBlockEntity extends CraterBlockEntity implements ITickabl
     }
 
     @Override
-    public <T> Optional<T> getForgeCapability(ForgeCapability forgeCapability, Direction direction) {
-        if (forgeCapability == ForgeCapability.ENERGY && (direction == Direction.DOWN || direction == null)) {
+    public <T> Optional<T> getCapability(CapabilityHandler forgeCapability, Direction direction) {
+        if (forgeCapability == CapabilityHandler.ENERGY && (direction == Direction.DOWN || direction == null)) {
             return (Optional<T>) Optional.of(energyStorage);
         }
 

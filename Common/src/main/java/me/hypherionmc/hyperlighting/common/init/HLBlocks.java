@@ -4,7 +4,7 @@ import me.hypherionmc.craterlib.systems.reg.BlockRegistryObject;
 import me.hypherionmc.craterlib.systems.reg.RegistrationProvider;
 import me.hypherionmc.hyperlighting.Constants;
 import me.hypherionmc.hyperlighting.common.blocks.*;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.Block;
 
@@ -12,7 +12,7 @@ import java.util.function.Supplier;
 
 public class HLBlocks {
 
-    public static RegistrationProvider<Block> BLOCKS = RegistrationProvider.get(Registry.BLOCK_REGISTRY, Constants.MOD_ID);
+    public static RegistrationProvider<Block> BLOCKS = RegistrationProvider.get(BuiltInRegistries.BLOCK, Constants.MOD_ID);
 
     /* Torches */
     public static BlockRegistryObject<Block> ADVANCED_TORCH = register("advanced_torch", () -> new AdvancedTorchBlock("advanced_torch", DyeColor.ORANGE, CommonRegistration.LIGHTS_TAB));

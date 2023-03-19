@@ -6,13 +6,13 @@ import me.hypherionmc.hyperlighting.Constants;
 import me.hypherionmc.hyperlighting.common.items.CandleInAJar;
 import me.hypherionmc.hyperlighting.common.items.LighterTool;
 import me.hypherionmc.hyperlighting.common.items.WirelessBattery;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Item;
 
 import java.util.function.Supplier;
 
 public class HLItems {
-    public static final RegistrationProvider<Item> ITEMS = RegistrationProvider.get(Registry.ITEM_REGISTRY, Constants.MOD_ID);
+    public static final RegistrationProvider<Item> ITEMS = RegistrationProvider.get(BuiltInRegistries.ITEM, Constants.MOD_ID);
 
     /* Tools */
     public static RegistryObject<Item> TORCH_TOOL = register("lighter_tool", LighterTool::new);

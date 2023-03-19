@@ -25,7 +25,7 @@ minecraft {
 dependencies {
     compileOnly group:'org.spongepowered', name:'mixin', version:'0.8.5'
     compileOnly("me.hypherionmc.craterlib:CraterLib-common-${minecraft_version}:${craterlib_version}")
-    compileOnly("com.lowdragmc.shimmer:Shimmer-common-1.19.1:${shimmer_version}")
+    //compileOnly("com.lowdragmc.shimmer:Shimmer-common-1.19.1:${shimmer_version}")
 }
 
 processResources {

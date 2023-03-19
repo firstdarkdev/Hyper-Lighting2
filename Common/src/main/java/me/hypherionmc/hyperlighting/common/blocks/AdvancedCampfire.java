@@ -1,8 +1,10 @@
 package me.hypherionmc.hyperlighting.common.blocks;
 
+import me.hypherionmc.craterlib.api.inventory.CraterCreativeModeTab;
 import me.hypherionmc.craterlib.api.rendering.CustomRenderType;
 import me.hypherionmc.craterlib.api.rendering.DyableBlock;
 import me.hypherionmc.craterlib.common.item.BlockItemDyable;
+import me.hypherionmc.craterlib.systems.internal.CreativeTabRegistry;
 import me.hypherionmc.craterlib.util.BlockStateUtils;
 import me.hypherionmc.craterlib.util.RenderUtils;
 import me.hypherionmc.hyperlighting.api.LightableBlock;
@@ -27,7 +29,6 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -80,7 +81,7 @@ public class AdvancedCampfire extends BaseEntityBlock implements DyableBlock, Li
 
     private DyeColor color;
 
-    public AdvancedCampfire(String name, DyeColor color, CreativeModeTab tab) {
+    public AdvancedCampfire(String name, DyeColor color, CraterCreativeModeTab tab) {
         super(Properties.of(
                 Material.WOOD,
                 MaterialColor.COLOR_BROWN)
@@ -94,7 +95,7 @@ public class AdvancedCampfire extends BaseEntityBlock implements DyableBlock, Li
         this.color = color;
         this.registerDefaultState(this.defaultBlockState().setValue(LIT, CommonRegistration.config.campfireConfig.litByDefault).setValue(SIGNAL_FIRE, false).setValue(FACING, Direction.NORTH).setValue(COLOR, color));
 
-        HLItems.register(name, () -> new BlockItemDyable(this, new Item.Properties().tab(tab)));
+        CreativeTabRegistry.setCreativeTab(tab, HLItems.register(name, () -> new BlockItemDyable(this, new Item.Properties())));
     }
 
     @Override
@@ -145,7 +146,7 @@ public class AdvancedCampfire extends BaseEntityBlock implements DyableBlock, Li
     @Override
     public void entityInside(BlockState blockState, Level level, BlockPos blockPos, Entity entity) {
         if (blockState.getValue(LIT) && entity instanceof LivingEntity && !EnchantmentHelper.hasFrostWalker((LivingEntity)entity)) {
-            entity.hurt(DamageSource.IN_FIRE, (float)this.fireDamage);
+            entity.hurt(level.damageSources().inFire(), (float)this.fireDamage);
         }
         super.entityInside(blockState, level, blockPos, entity);
     }

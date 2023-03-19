@@ -89,7 +89,7 @@ dependencies {
     //implementation fg.deobf("curse.maven:rubidium-574856:${ribidium_version}")
 
     // Shimmer
-    implementation fg.deobf("com.lowdragmc.shimmer:Shimmer-forge-1.19.1:${shimmer_version}")
+    //implementation fg.deobf("com.lowdragmc.shimmer:Shimmer-forge-1.19.1:${shimmer_version}")
 
     // The One Probe
     //implementation "mcjty.theoneprobe:theoneprobe:${top_version}:api"

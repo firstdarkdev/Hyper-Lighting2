@@ -1,10 +1,10 @@
 package me.hypherionmc.hyperlighting.common.blockentities;
 
 import me.hypherionmc.craterlib.api.blockentities.ITickable;
-import me.hypherionmc.craterlib.api.blockentities.caps.ForgeCapability;
+import me.hypherionmc.craterlib.api.blockentities.caps.CapabilityHandler;
 import me.hypherionmc.craterlib.common.blockentity.CraterBlockEntity;
-import me.hypherionmc.craterlib.systems.SimpleInventory;
 import me.hypherionmc.craterlib.systems.energy.CustomEnergyStorage;
+import me.hypherionmc.craterlib.systems.inventory.SimpleInventory;
 import me.hypherionmc.hyperlighting.common.blocks.BatteryNeon;
 import me.hypherionmc.hyperlighting.common.init.HLBlockEntities;
 import me.hypherionmc.hyperlighting.common.items.WirelessBattery;
@@ -131,8 +131,8 @@ public class BatteryNeonBlockEntity extends CraterBlockEntity implements ITickab
     }
 
     @Override
-    public <T> Optional<T> getForgeCapability(ForgeCapability capability, Direction side) {
-        if (capability == ForgeCapability.ENERGY && side == null) {
+    public <T> Optional<T> getCapability(CapabilityHandler capability, Direction side) {
+        if (capability == CapabilityHandler.ENERGY && side == null) {
             return (Optional<T>) Optional.of(energyStorage);
         }
         return Optional.empty();

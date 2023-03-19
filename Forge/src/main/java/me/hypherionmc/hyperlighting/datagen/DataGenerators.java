@@ -16,7 +16,7 @@ public class DataGenerators {
     public static void gatherData(GatherDataEvent event) {
         System.out.println("Running Datagen");
         DataGenerator generator = event.getGenerator();
-        generator.addProvider(event.includeServer(), new RecipeGenerator(generator));
+        //generator.addProvider(event.includeServer(), new RecipeGenerator(generator));
     }
 
 }

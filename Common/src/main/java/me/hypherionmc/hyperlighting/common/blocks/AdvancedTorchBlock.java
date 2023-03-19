@@ -2,8 +2,10 @@ package me.hypherionmc.hyperlighting.common.blocks;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
+import me.hypherionmc.craterlib.api.inventory.CraterCreativeModeTab;
 import me.hypherionmc.craterlib.api.rendering.DyableBlock;
 import me.hypherionmc.craterlib.common.item.BlockItemDyable;
+import me.hypherionmc.craterlib.systems.internal.CreativeTabRegistry;
 import me.hypherionmc.craterlib.util.BlockStateUtils;
 import me.hypherionmc.craterlib.util.RenderUtils;
 import me.hypherionmc.hyperlighting.api.LightableBlock;
@@ -70,12 +72,12 @@ public class AdvancedTorchBlock extends HorizontalDirectionalBlock implements Dy
 
     private DyeColor color;
 
-    public AdvancedTorchBlock(String name, DyeColor color, CreativeModeTab tab) {
+    public AdvancedTorchBlock(String name, DyeColor color, CraterCreativeModeTab tab) {
         super(Properties.of(Material.WOOD).noCollission().instabreak().lightLevel(BlockStateUtils.createLightLevelFromLitBlockState(15)));
         this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH).setValue(LIT, CommonRegistration.config.torchConfig.litByDefault).setValue(COLOR, color));
         this.color = color;
 
-        HLItems.register(name, () -> new BlockItemDyable(this, new Item.Properties().tab(tab)));
+        CreativeTabRegistry.setCreativeTab(tab, HLItems.register(name, () -> new BlockItemDyable(this, new Item.Properties())));
     }
 
     @Override

@@ -6,4 +6,4 @@ Not your average Minecraft Lighting mod!
 
 ***
 
-#### Requires [CraterLib](https://github.com/hypherionmc/CraterLib)
+#### Requires [CraterLib](https://github.com/firstdarkdev/CraterLib)

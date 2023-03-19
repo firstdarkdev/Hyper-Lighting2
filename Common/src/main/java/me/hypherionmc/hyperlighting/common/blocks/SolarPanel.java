@@ -1,10 +1,11 @@
 package me.hypherionmc.hyperlighting.common.blocks;
 
+import me.hypherionmc.craterlib.common.item.BlockItemDyable;
+import me.hypherionmc.craterlib.systems.internal.CreativeTabRegistry;
 import me.hypherionmc.hyperlighting.common.blockentities.SolarPanelBlockEntity;
 import me.hypherionmc.hyperlighting.common.init.CommonRegistration;
 import me.hypherionmc.hyperlighting.common.init.HLItems;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -32,7 +33,7 @@ public class SolarPanel extends BaseEntityBlock {
     public SolarPanel(String name) {
         super(Properties.of(Material.GLASS).sound(SoundType.GLASS).noCollission().noOcclusion());
 
-        HLItems.register(name, () -> new BlockItem(this, new Item.Properties().tab(CommonRegistration.MACHINES_TAB)));
+        CreativeTabRegistry.setCreativeTab(CommonRegistration.MACHINES_TAB, HLItems.register(name, () -> new BlockItemDyable(this, new Item.Properties())));
     }
 
     @Override

@@ -1,6 +1,5 @@
 package me.hypherionmc.hyperlighting.common.containers;
 
-import me.hypherionmc.craterlib.systems.SimpleInventory;
 import me.hypherionmc.hyperlighting.common.blockentities.BatteryNeonBlockEntity;
 import me.hypherionmc.hyperlighting.common.init.HLContainers;
 import me.hypherionmc.hyperlighting.common.items.WirelessBattery;
@@ -10,7 +9,6 @@ import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.DyeItem;
 import net.minecraft.world.item.ItemStack;

@@ -1,8 +1,10 @@
 package me.hypherionmc.hyperlighting.common.items;
 
+import me.hypherionmc.craterlib.systems.internal.CreativeTabRegistry;
 import me.hypherionmc.hyperlighting.api.SwitchModule;
 import me.hypherionmc.hyperlighting.common.blocks.SolarPanel;
 import me.hypherionmc.hyperlighting.common.init.CommonRegistration;
+import me.hypherionmc.hyperlighting.common.init.HLItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtUtils;
@@ -22,7 +24,8 @@ import net.minecraft.world.level.Level;
 public class WirelessBattery extends Item implements SwitchModule {
 
     public WirelessBattery() {
-        super(new Properties().tab(CommonRegistration.MACHINES_TAB).stacksTo(1));
+        super(new Properties().stacksTo(1));
+        CreativeTabRegistry.setCreativeTab(CommonRegistration.MACHINES_TAB, HLItems.WIRELESS_BATTERY);
     }
 
     @Override

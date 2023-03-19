@@ -2,8 +2,8 @@ package me.hypherionmc.hyperlighting.common.blocks;
 
 import me.hypherionmc.craterlib.api.rendering.DyableBlock;
 import me.hypherionmc.craterlib.common.item.BlockItemDyable;
+import me.hypherionmc.craterlib.systems.internal.CreativeTabRegistry;
 import me.hypherionmc.craterlib.util.BlockStateUtils;
-import me.hypherionmc.hyperlighting.Constants;
 import me.hypherionmc.hyperlighting.common.blockentities.BatteryNeonBlockEntity;
 import me.hypherionmc.hyperlighting.common.init.CommonRegistration;
 import me.hypherionmc.hyperlighting.common.init.HLItems;
@@ -17,7 +17,10 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -64,7 +67,7 @@ public class BatteryNeon extends BaseEntityBlock implements DyableBlock {
         super(Properties.of(Material.GLASS).sound(SoundType.GLASS).lightLevel(BlockStateUtils.createLightLevelFromLitBlockState(14)));
         this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH).setValue(COLOR, DyeColor.WHITE));
 
-        HLItems.ITEMS.register(name, () -> new BlockItemDyable(this, new Item.Properties().tab(CommonRegistration.LIGHTS_TAB)));
+        CreativeTabRegistry.setCreativeTab(CommonRegistration.LIGHTS_TAB, HLItems.register(name, () -> new BlockItemDyable(this, new Item.Properties())));
     }
 
     @Override

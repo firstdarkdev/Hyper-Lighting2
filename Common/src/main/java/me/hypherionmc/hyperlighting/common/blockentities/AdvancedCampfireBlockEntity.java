@@ -53,12 +53,14 @@ public class AdvancedCampfireBlockEntity extends BlockEntity implements Clearabl
                 isDirty = true;
                 int time = be.cookingProgress[i]++;
                 if (be.cookingProgress[i] >= be.cookingTime[i]) {
-                    Container container = new SimpleContainer(inStack);
-                    ItemStack outStack = be.quickCheck.getRecipeFor(container, level).map(r -> r.assemble(container)).orElse(inStack);
-                    Containers.dropItemStack(level, blockPos.getX(), blockPos.getY(), blockPos.getZ(), outStack);
-                    be.items.set(i, ItemStack.EMPTY);
-                    level.sendBlockUpdated(blockPos, blockState, blockState, 3);
-                    level.gameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Context.of(blockState));
+                    Container $$7 = new SimpleContainer(inStack);
+                    ItemStack $$8 = ((AdvancedCampfireBlockEntity) blockEntity).quickCheck.getRecipeFor($$7, level).map(($$2x) -> $$2x.assemble($$7, level.registryAccess())).orElse(inStack);
+                    if ($$8.isItemEnabled(level.enabledFeatures())) {
+                        Containers.dropItemStack(level, blockPos.getX(), blockPos.getY(), blockPos.getZ(), $$8);
+                        ((AdvancedCampfireBlockEntity) blockEntity).items.set(i, ItemStack.EMPTY);
+                        level.sendBlockUpdated(blockPos, blockState, blockState, 3);
+                        level.gameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Context.of(blockState));
+                    }
                 }
             }
         }

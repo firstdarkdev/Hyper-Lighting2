@@ -1,24 +1,10 @@
 package me.hypherionmc.hyperlighting.common.integration.top.overrides;
 
-import mcjty.theoneprobe.api.*;
-import me.hypherionmc.hyperlighting.Constants;
-import me.hypherionmc.hyperlighting.common.blockentities.AdvancedCampfireBlockEntity;
-import me.hypherionmc.hyperlighting.common.integration.top.TOPIntegration;
-import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
-
-import static mcjty.theoneprobe.api.IProbeConfig.ConfigMode.EXTENDED;
-import static mcjty.theoneprobe.api.IProbeConfig.ConfigMode.NORMAL;
-import static mcjty.theoneprobe.api.TextStyleClass.MODNAME;
-
 /**
  * @author HypherionSA
  * @date 27/08/2022
  */
-public class TOPCampfireInfoProvider implements IBlockDisplayOverride {
+/*public class TOPCampfireInfoProvider implements IBlockDisplayOverride {
 
     @Override
     public boolean overrideStandardInfo(ProbeMode probeMode, IProbeInfo iProbeInfo, Player playerEntity, Level world, BlockState blockState, IProbeHitData iProbeHitData) {
@@ -57,4 +43,4 @@ public class TOPCampfireInfoProvider implements IBlockDisplayOverride {
     private boolean show(ProbeMode mode, IProbeConfig.ConfigMode cfg) {
         return cfg == NORMAL || (cfg == EXTENDED && mode == ProbeMode.EXTENDED);
     }
-}
+}*/

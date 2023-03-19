@@ -1,8 +1,10 @@
 package me.hypherionmc.hyperlighting.common.blocks;
 
+import me.hypherionmc.craterlib.api.inventory.CraterCreativeModeTab;
 import me.hypherionmc.craterlib.api.rendering.CustomRenderType;
 import me.hypherionmc.craterlib.api.rendering.DyableBlock;
 import me.hypherionmc.craterlib.common.item.BlockItemDyable;
+import me.hypherionmc.craterlib.systems.internal.CreativeTabRegistry;
 import me.hypherionmc.craterlib.util.BlockStateUtils;
 import me.hypherionmc.craterlib.util.MathUtils;
 import me.hypherionmc.craterlib.util.RenderUtils;
@@ -68,7 +70,7 @@ public class AdvancedLanternBlock extends FaceAttachedHorizontalDirectionalBlock
 
     private DyeColor color;
 
-    public AdvancedLanternBlock(String name, DyeColor color, CreativeModeTab tab) {
+    public AdvancedLanternBlock(String name, DyeColor color, CraterCreativeModeTab tab) {
         super(Properties.of(Material.HEAVY_METAL)
                 .instabreak()
                 .sound(SoundType.LANTERN)
@@ -76,7 +78,8 @@ public class AdvancedLanternBlock extends FaceAttachedHorizontalDirectionalBlock
         );
         this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH).setValue(LIT, CommonRegistration.config.lanternConfig.litByDefault).setValue(COLOR, color));
         this.color = color;
-        HLItems.register(name, () -> new BlockItemDyable(this, new Item.Properties().tab(tab)));
+
+        CreativeTabRegistry.setCreativeTab(tab, HLItems.register(name, () -> new BlockItemDyable(this, new Item.Properties())));
     }
 
     @Override

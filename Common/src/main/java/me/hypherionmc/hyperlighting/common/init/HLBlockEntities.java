@@ -6,7 +6,7 @@ import me.hypherionmc.hyperlighting.Constants;
 import me.hypherionmc.hyperlighting.common.blockentities.AdvancedCampfireBlockEntity;
 import me.hypherionmc.hyperlighting.common.blockentities.BatteryNeonBlockEntity;
 import me.hypherionmc.hyperlighting.common.blockentities.SolarPanelBlockEntity;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 
 /**
@@ -15,7 +15,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
  */
 public class HLBlockEntities {
 
-    public static final RegistrationProvider<BlockEntityType<?>> BE = RegistrationProvider.get(Registry.BLOCK_ENTITY_TYPE, Constants.MOD_ID);
+    public static final RegistrationProvider<BlockEntityType<?>> BE = RegistrationProvider.get(BuiltInRegistries.BLOCK_ENTITY_TYPE, Constants.MOD_ID);
 
     public static RegistryObject<BlockEntityType<AdvancedCampfireBlockEntity>> CAMPFIRE = BE.register("campfire", () -> BlockEntityType.Builder.of(AdvancedCampfireBlockEntity::new, HLBlocks.ADVANCED_CAMPFIRE.get()).build(null));
 
