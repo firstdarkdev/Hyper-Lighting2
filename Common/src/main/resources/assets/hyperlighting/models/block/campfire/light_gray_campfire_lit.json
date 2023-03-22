@@ -1,9 +1,0 @@
-{
-  "parent": "hyperlighting:block/campfire_base",
-  "textures": {
-    "0": "hyperlighting:block/campfire/light_gray_campfire_log_lit",
-    "1": "hyperlighting:block/campfire/light_gray_campfire_log",
-    "2": "hyperlighting:block/campfire/light_gray_campfire_fire",
-    "particle": "hyperlighting:block/campfire/light_gray_campfire_log_lit"
-  }
-}
