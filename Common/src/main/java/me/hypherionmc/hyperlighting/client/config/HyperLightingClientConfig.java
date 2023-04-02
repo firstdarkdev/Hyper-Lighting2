@@ -4,8 +4,8 @@ import me.hypherionmc.craterlib.common.config.ModuleConfig;
 import me.hypherionmc.craterlib.common.config.annotations.SubConfig;
 import me.hypherionmc.hyperlighting.Constants;
 import me.hypherionmc.hyperlighting.common.init.CommonRegistration;
-import me.hypherionmc.moonconfig.core.conversion.Path;
-import me.hypherionmc.moonconfig.core.conversion.SpecComment;
+import shadow.hypherionmc.moonconfig.core.conversion.Path;
+import shadow.hypherionmc.moonconfig.core.conversion.SpecComment;
 
 public class HyperLightingClientConfig extends ModuleConfig {
 
