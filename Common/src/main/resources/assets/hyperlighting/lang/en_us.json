@@ -5,6 +5,8 @@
   "block.hyperlighting.advanced_campfire": "Advanced Campfire (%s)",
   "block.hyperlighting.solar_panel": "Solar Panel",
   "block.hyperlighting.battery_neon": "Battery Fluorescent Light",
+  "block.hyperlighting.pumpkin_trio": "Jack-o'-Lantern Trio",
+  "block.hyperlighting.pumpkin_trio_inverted": "Jack-o'-Lantern Trio (Inverted)",
 
   "item.hyperlighting.lighter_tool": "Torch Lighter Tool",
   "item.hyperlighting.wireless_battery": "Wireless Battery",

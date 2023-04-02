@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "facing=north,lit=true": { "model": "hyperlighting:block/jack_o_lantern_trio_inverted", "y": 180  },
+    "facing=south,lit=true": { "model": "hyperlighting:block/jack_o_lantern_trio_inverted" },
+    "facing=east,lit=true": { "model": "hyperlighting:block/jack_o_lantern_trio_inverted", "y": 270 },
+    "facing=west,lit=true": { "model": "hyperlighting:block/jack_o_lantern_trio_inverted", "y": 90 },
+    "facing=north,lit=false": { "model": "hyperlighting:block/carved_pumpkin_trio_inverted", "y": 180 },
+    "facing=south,lit=false": { "model": "hyperlighting:block/carved_pumpkin_trio_inverted" },
+    "facing=east,lit=false": { "model": "hyperlighting:block/carved_pumpkin_trio_inverted", "y": 270 },
+    "facing=west,lit=false": { "model": "hyperlighting:block/carved_pumpkin_trio_inverted", "y": 90 }
+  }
+}

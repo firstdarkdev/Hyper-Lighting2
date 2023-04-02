@@ -32,7 +32,8 @@ public class HLBlocks {
 
     /* Other */
     public static BlockRegistryObject<Block> BATTERY_NEON = register("battery_neon", () -> new BatteryNeon("battery_neon"));
-
+    public static BlockRegistryObject<Block> PUMPKIN_TRIO = register("pumpkin_trio", () -> new PumpkinTrioBlock("pumpkin_trio"));
+    public static BlockRegistryObject<Block> PUMPKIN_TRIO_INVERTED = register("pumpkin_trio_inverted", () -> new PumpkinTrioBlock("pumpkin_trio_inverted"));
 
     public static void loadAll() {}
 

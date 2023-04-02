@@ -29,6 +29,11 @@ public class HyperLightingClientConfig extends ModuleConfig {
     @SubConfig
     public CandleConfig candleConfig = new CandleConfig();
 
+    @Path("pumpkinTrioConfig")
+    @SpecComment("Pumpkin Trio Configuration")
+    @SubConfig
+    public PumpkinTrioConfig pumpkinTrioConfig = new PumpkinTrioConfig();
+
     public HyperLightingClientConfig() {
         super(Constants.MOD_ID, "hyperlighting-client");
         registerAndSetup(this);
@@ -92,6 +97,20 @@ public class HyperLightingClientConfig extends ModuleConfig {
 
         @Path("coloredLighting")
         @SpecComment("Should Candles emit colored Lighting when SHIMMER is installed")
+        public boolean coloredLighting = true;
+    }
+
+    public static class PumpkinTrioConfig {
+        @Path("litByDefault")
+        @SpecComment("Should Pumpkin Trios be lit by default when placed")
+        public boolean litByDefault = false;
+
+        @Path("requiresTool")
+        @SpecComment("Is the Torch Lighter tool needed to light Pumpkin Trios")
+        public boolean requiresTool = true;
+
+        @Path("coloredLighting")
+        @SpecComment("Should Pumpkin Trios emit colored Lighting when SHIMMER is installed")
         public boolean coloredLighting = true;
     }
 }
