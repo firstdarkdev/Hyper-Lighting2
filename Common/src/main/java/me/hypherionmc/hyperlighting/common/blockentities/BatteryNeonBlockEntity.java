@@ -108,7 +108,7 @@ public class BatteryNeonBlockEntity extends CraterBlockEntity implements ITickab
 
         if (level.getGameTime() % 40L == 0L) {
             if (level.getBlockState(blockPos).getValue(BatteryNeon.LIT)) {
-                this.energyStorage.extractEnergy(1, false);
+                this.energyStorage.extractEnergyInternal(1, false);
             }
         }
         this.sendUpdates();
