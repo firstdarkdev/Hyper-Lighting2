@@ -1,5 +1,5 @@
 {
-  "parent": "hyperlighting:block/candle_base",
+  "parent": "hyperlighting:block/advanced_candle_base",
   "overrides": [
     { "predicate": { "color": 0 }, "model": "hyperlighting:block/candle/white_candle" },
     { "predicate": { "color": 1 }, "model": "hyperlighting:block/candle/orange_candle" },

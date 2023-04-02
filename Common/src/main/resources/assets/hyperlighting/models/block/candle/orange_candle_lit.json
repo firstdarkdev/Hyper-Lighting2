@@ -1,6 +1,6 @@
 {
   "parent": "hyperlighting:block/advanced_candle_base",
   "textures": {
-    "0": "hyperlighting:block/candle/base/white_advanced_candle"
+    "0": "hyperlighting:block/candle/lit/orange_advanced_candle_lit"
   }
 }
