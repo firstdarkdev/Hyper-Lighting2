@@ -2,11 +2,11 @@
 	"credit": "Made with Blockbench",
 	"textures": {
 		"1": "hyperlighting:block/grayscale_glass",
-		"2": "block/anvil",
-		"3": "block/anvil_top",
-		"5": "block/coal_block",
-		"6": "block/candle",
-		"particle": "block/coal_block"
+		"2": "minecraft:block/anvil",
+		"3": "minecraft:block/anvil_top",
+		"5": "minecraft:block/coal_block",
+		"6": "minecraft:block/candle",
+		"particle": "minecraft:block/coal_block"
 	},
 	"elements": [
 		{
@@ -313,6 +313,30 @@
 			}
 		}
 	],
+	"display": {
+		"thirdperson_righthand": {
+			"translation": [0, 3, 1],
+			"scale": [0.55, 0.55, 0.55]
+		},
+		"thirdperson_lefthand": {
+			"translation": [0, 3, 1],
+			"scale": [0.55, 0.55, 0.55]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, -90, 25],
+			"translation": [1.13, 3.2, 1.13],
+			"scale": [0.68, 0.68, 0.68]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, -90, 25],
+			"translation": [1.13, 3.2, 1.13],
+			"scale": [0.68, 0.68, 0.68]
+		},
+		"ground": {
+			"translation": [0, 3, 0],
+			"scale": [0.25, 0.25, 0.25]
+		}
+	},
 	"groups": [
 		{
 			"name": "lantern",
