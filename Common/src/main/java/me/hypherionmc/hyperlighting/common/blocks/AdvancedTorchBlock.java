@@ -31,9 +31,8 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.HorizontalDirectionalBlock;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.AttachFace;
@@ -81,12 +80,60 @@ public class AdvancedTorchBlock extends HorizontalDirectionalBlock implements Dy
     }
 
     @Override
-    public VoxelShape getShape(BlockState blockState, BlockGetter level, BlockPos pos, CollisionContext context) {
+    public @NotNull VoxelShape getShape(BlockState blockState, @NotNull BlockGetter level, @NotNull BlockPos pos, @NotNull CollisionContext context) {
         return switch (blockState.getValue(ATTACH_FACE)) {
             case FLOOR -> SHAPES.get(Direction.UP);
             case WALL -> SHAPES.get(blockState.getValue(FACING));
             case CEILING -> null;
         };
+    }
+
+    @Override
+    public @NotNull BlockState updateShape(@NotNull BlockState stateIn, @NotNull Direction facing, @NotNull BlockState neighbourState, @NotNull LevelAccessor levelIn, @NotNull BlockPos currentPos, @NotNull BlockPos newPos) {
+        AttachFace attachFace = stateIn.getValue(ATTACH_FACE);
+
+        if (attachFace == AttachFace.FLOOR) {
+            return facing == Direction.DOWN && !this.canSurvive(stateIn, levelIn, currentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(stateIn, facing, neighbourState, levelIn, currentPos, newPos);
+        }
+
+        return facing.getOpposite() == stateIn.getValue(FACING) && !stateIn.canSurvive(levelIn, currentPos) ? Blocks.AIR.defaultBlockState() : stateIn;
+    }
+
+    @Override
+    public boolean canSurvive(BlockState stateIn, @NotNull LevelReader levelIn, @NotNull BlockPos currentPos) {
+        AttachFace attachFace = stateIn.getValue(ATTACH_FACE);
+
+        if (attachFace == AttachFace.FLOOR) {
+            return canSupportCenter(levelIn, currentPos.below(), Direction.UP);
+        }
+
+        Direction direction = stateIn.getValue(FACING);
+        BlockPos neighbourPos = currentPos.relative(direction.getOpposite());
+        BlockState currentState = levelIn.getBlockState(neighbourPos);
+        return currentState.isFaceSturdy(levelIn, neighbourPos, direction);
+    }
+
+    @Override
+    public void animateTick(BlockState stateIn, @NotNull Level levelIn, @NotNull BlockPos pos, @NotNull RandomSource random) {
+        if (stateIn.getValue(LIT)) {
+            DyeColor color = stateIn.getValue(COLOR);
+
+            if (stateIn.getValue(ATTACH_FACE) == AttachFace.FLOOR) {
+                double d0 = (double) pos.getX() + 0.5D;
+                double d1 = (double) pos.getY() + 0.7D;
+                double d2 = (double) pos.getZ() + 0.5D;
+                levelIn.addParticle(ParticleTypes.SMOKE, d0, d1, d2, 0.0D, 0.0D, 0.0D);
+                levelIn.addParticle(FlameParticles.getParticleByColor(color).get(), d0, d1, d2, 0D, 0D, 0D);
+            } else {
+                Direction direction = stateIn.getValue(FACING);
+                double d0 = (double) pos.getX() + 0.5D;
+                double d1 = (double) pos.getY() + 0.7D;
+                double d2 = (double) pos.getZ() + 0.5D;
+                Direction direction1 = direction.getOpposite();
+                levelIn.addParticle(ParticleTypes.SMOKE, d0 + 0.37D * (double) direction1.getStepX(), d1 + 0.15D, d2 + 0.37D * (double) direction1.getStepZ(), 0.0D, 0.0D, 0.0D);
+                levelIn.addParticle(FlameParticles.getParticleByColor(color).get(), d0 + 0.37D * (double) direction1.getStepX(), d1 + 0.15D, d2 + 0.37D * (double) direction1.getStepZ(), 0D, 0D, 0D);
+            }
+        }
     }
 
     @Override
@@ -107,17 +154,6 @@ public class AdvancedTorchBlock extends HorizontalDirectionalBlock implements Dy
         return state.setValue(LIT, CommonRegistration.config.torchConfig.litByDefault);
     }
 
-    @Override
-    public BlockState updateShape(BlockState stateIn, Direction facing, BlockState neighbourState, LevelAccessor levelIn, BlockPos currentPos, BlockPos newPos) {
-        if (facing == Direction.DOWN && !this.isValidPosition(stateIn, levelIn, currentPos, facing)) {
-            return Blocks.AIR.defaultBlockState();
-        }
-        return super.updateShape(stateIn, facing, neighbourState, levelIn, currentPos, newPos);
-    }
-
-    public boolean isValidPosition(BlockState state, LevelAccessor levelAccessor, BlockPos pos, Direction direction) {
-        return canSupportCenter(levelAccessor, pos, direction);
-    }
 
     @Override
     public void toggleLight(Level worldIn, BlockState state, BlockPos pos) {
@@ -183,29 +219,6 @@ public class AdvancedTorchBlock extends HorizontalDirectionalBlock implements Dy
         tooltip.add(Component.literal(ChatFormatting.YELLOW + "Dyable"));
         tooltip.add(Component.literal(ChatFormatting.GREEN + "Color: " + color.getName()));
         super.appendHoverText(stack, level, tooltip, options);
-    }
-
-    @Override
-    public void animateTick(BlockState stateIn, Level levelIn, BlockPos pos, RandomSource random) {
-        if (stateIn.getValue(LIT)) {
-            DyeColor color = stateIn.getValue(COLOR);
-
-            if (stateIn.getValue(ATTACH_FACE) == AttachFace.FLOOR) {
-                double d0 = (double) pos.getX() + 0.5D;
-                double d1 = (double) pos.getY() + 0.7D;
-                double d2 = (double) pos.getZ() + 0.5D;
-                levelIn.addParticle(ParticleTypes.SMOKE, d0, d1, d2, 0.0D, 0.0D, 0.0D);
-                levelIn.addParticle(FlameParticles.getParticleByColor(color).get(), d0, d1, d2, 0D, 0D, 0D);
-            } else {
-                Direction direction = stateIn.getValue(FACING);
-                double d0 = (double) pos.getX() + 0.5D;
-                double d1 = (double) pos.getY() + 0.7D;
-                double d2 = (double) pos.getZ() + 0.5D;
-                Direction direction1 = direction.getOpposite();
-                levelIn.addParticle(ParticleTypes.SMOKE, d0 + 0.37D * (double) direction1.getStepX(), d1 + 0.15D, d2 + 0.37D * (double) direction1.getStepZ(), 0.0D, 0.0D, 0.0D);
-                levelIn.addParticle(FlameParticles.getParticleByColor(color).get(), d0 + 0.37D * (double) direction1.getStepX(), d1 + 0.15D, d2 + 0.37D * (double) direction1.getStepZ(), 0D, 0D, 0D);
-            }
-        }
     }
 
     @Override
