@@ -169,7 +169,7 @@ public class AdvancedCampfire extends BaseEntityBlock implements DyableBlock, Li
         LevelAccessor levelAccessor = blockPlaceContext.getLevel();
         BlockPos blockPos = blockPlaceContext.getClickedPos();
         boolean bl = levelAccessor.getFluidState(blockPos).getType() == Fluids.WATER;
-        return this.defaultBlockState().setValue(SIGNAL_FIRE, this.isSmokeSource(levelAccessor.getBlockState(blockPos.below()))).setValue(LIT, !bl).setValue(FACING, blockPlaceContext.getHorizontalDirection());
+        return this.defaultBlockState().setValue(SIGNAL_FIRE, this.isSmokeSource(levelAccessor.getBlockState(blockPos.below()))).setValue(LIT, !bl && CommonRegistration.config.campfireConfig.litByDefault).setValue(FACING, blockPlaceContext.getHorizontalDirection());
     }
 
     @Override
